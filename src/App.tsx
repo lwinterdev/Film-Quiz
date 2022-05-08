@@ -6,8 +6,10 @@ import BackgroundImage from './images/background.jpg';
 
 //components
 import QuestionCard from './components/QuestionCard';
-import { useState } from 'react';
 import {VscDeviceCameraVideo} from 'react-icons/vsc';
+
+//hooks
+import { useState } from 'react';
 
 import { fetchQuizQuestions } from './API';
 import { Difficulty, QuestionState } from './API';
@@ -30,6 +32,7 @@ function App() {
   const [score,setScore] = useState(0);
   const [gameOver,setGameOver] = useState(true);
 
+ 
   const startTrivia = async() => { //function to start the game
     setLoading(true);
 
@@ -45,7 +48,7 @@ function App() {
     setLoading(false);
   };
 
-
+  
   const checkAnswer =(e: React.MouseEvent<HTMLButtonElement>) => { //function to check the answer the user has given
     const answer = e.currentTarget.value;
     //check if correct
@@ -76,9 +79,10 @@ function App() {
                                   backgroundPosition: 'center',
                                   backgroundSize: 'cover',
                                   backgroundRepeat: 'no-repeat'}}>
+
       <h1 className='p-4'>FILM QUIZ <VscDeviceCameraVideo style={{'marginBottom':'5px'}}/></h1>
       
-      {gameOver || number === TotalQuestions -1 ? //show the start button only when the game is finished or not started yet
+      {(gameOver || userAnswers.length === TotalQuestions) && !loading ? //show the start button only when the game is finished or not started yet
         <button className='start-button' onClick={startTrivia}>
           Start
         </button>
@@ -100,7 +104,7 @@ function App() {
         />
       }
       
-      {!loading && number !== TotalQuestions -1 && //show next button only if the game is currently active or last question has not yet been reached
+      {!gameOver && !loading && userAnswers.length === number + 1 && number !== TotalQuestions - 1 && //show next button only if the game is currently active or last question has not yet been reached
             <button className='m-4 next-button ' onClick={nextQuestion}>
               Next
             </button>
