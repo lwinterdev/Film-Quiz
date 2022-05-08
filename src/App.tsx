@@ -82,12 +82,10 @@ function App() {
 
       <h1 className='p-4'>FILM QUIZ <VscDeviceCameraVideo style={{'marginBottom':'5px'}}/></h1>
       
-      {(gameOver || userAnswers.length === TotalQuestions) && !loading ? //show the start button only when the game is finished or not started yet
+      {(gameOver || userAnswers.length === TotalQuestions) && !loading && //show the start button only when the game is finished or not started yet
         <button className='start-button' onClick={startTrivia}>
           Start
         </button>
-        :
-        null
       }
       
       <p>Score: {score}</p>
