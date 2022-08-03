@@ -69,3 +69,23 @@ h1{
   min-width: 200px;
   color : white
 }
+
+.restart-button{
+  border-radius: 20px;
+  background-color: black;
+  min-width: auto;
+  color : white
+}
+
+
+.quiz-finished{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(40px + 2vmin);
+  border-radius: 20px;
+  min-width: 200px;
+  max-width: auto;
+  background-color: rgb(172, 121, 54);
+}
+

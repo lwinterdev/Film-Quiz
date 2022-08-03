@@ -25,6 +25,7 @@ const TotalQuestions = 10;
 
 function App() {
   
+
   const [loading,setLoading] = useState(false);
   const [questions,setQuestions] = useState<QuestionState[]>([]);
   const [number,setNumber] = useState(0);
@@ -46,6 +47,8 @@ function App() {
     setScore(0);
     setGameOver(false);
     setLoading(false);
+
+
   };
 
   
@@ -64,13 +67,14 @@ function App() {
 
     };
     setUserAnswers(prev => [...prev, answerObject])
-
+    
   };
 
 
   const nextQuestion = () =>{ //function to jump to next question
     const nextQuestion = number +1 ;
     setNumber(nextQuestion);
+
   };
 
   
@@ -82,22 +86,26 @@ function App() {
 
       <h1 className='p-4'>FILM QUIZ <VscDeviceCameraVideo style={{'marginBottom':'5px'}}/></h1>
       
-      {(gameOver || userAnswers.length === TotalQuestions) && !loading && //show the start button only when the game is finished or not started yet
+      {(gameOver ) && !loading && //show the start button only when the game is finished or not started yet
         <button className='start-button' onClick={startTrivia}>
           Start
         </button>
       }
       
-      <p>Score: {score}</p>
+      { !loading &&
+        <p>Score: {score}</p>
+      }
+
       {loading && <p>Loading Questions...</p>}
       
-      {!loading && !gameOver && //show the questions and possible answers only when the game is not over yet
+      {!loading && !gameOver && userAnswers.length !== TotalQuestions && //show the questions and possible answers only when the game is not over yet
         <QuestionCard 
           questionNumber={number + 1} 
           totalQuestions={TotalQuestions} 
           question={questions[number].question} 
           answers={questions[number].answers}
           userAnswer={userAnswers ? userAnswers[number] : undefined}
+          correctAnswer={questions[number].correct_answer}
           callback={checkAnswer}
         />
       }
@@ -107,6 +115,21 @@ function App() {
               Next
             </button>
       }
+
+      {userAnswers.length == TotalQuestions && !loading &&
+        <>
+          <div className='quiz-finished'>Quiz Finished!</div>
+          <p>You got {score} out of 10 Questions correct!</p>
+        </>
+      }
+
+      {(!gameOver && userAnswers.length === TotalQuestions) && !loading && //show the start button only when the game is finished or not started yet
+        <button className='start-button' onClick={startTrivia}>
+          Try Again
+        </button>
+      }
+
+      
 
     </div>
   );
