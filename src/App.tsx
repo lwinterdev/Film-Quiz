@@ -98,7 +98,7 @@ function App() {
 
       {loading && <p>Loading Questions...</p>}
       
-      {!loading && !gameOver && userAnswers.length !== TotalQuestions && //show the questions and possible answers only when the game is not over yet
+      {!loading && !gameOver && userAnswers.length !== TotalQuestions +1 && //show the questions and possible answers only when the game is not over yet
         <QuestionCard 
           questionNumber={number + 1} 
           totalQuestions={TotalQuestions} 
@@ -110,7 +110,7 @@ function App() {
         />
       }
       
-      {!gameOver && !loading && userAnswers.length === number + 1 && number !== TotalQuestions - 1 && //show next button only if the game is currently active or last question has not yet been reached
+      {!gameOver && !loading && userAnswers.length === number + 1 && number !== TotalQuestions -1&& //show next button only if the game is currently active or last question has not yet been reached
             <button className='m-4 next-button ' onClick={nextQuestion}>
               Next
             </button>
@@ -123,7 +123,7 @@ function App() {
         </>
       }
 
-      {(!gameOver && userAnswers.length === TotalQuestions) && !loading && //show the start button only when the game is finished or not started yet
+      {(!gameOver && userAnswers.length === TotalQuestions ) && !loading && //show the start button only when the game is finished or not started yet
         <button className='start-button' onClick={startTrivia}>
           Try Again
         </button>
