@@ -6,9 +6,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  font-size: calc(12px + 2vmin);
+  color: white;}
 
 .App-header {
   background-color: #282c34;
@@ -17,30 +16,63 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  
   color: white;
+}
+
+button:focus{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+  border-radius: 20px;
+  min-width: 200px;
+  max-width: auto;
+  background-color: rgb(12, 76, 97);
 }
 
 .answer{
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(20px + 2vmin);
+ 
   border-radius: 20px;
   min-width: 200px;
   max-width: auto;
   background-color: rgb(198, 241, 255);
 }
 
+.correct-answer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 20px;
+  min-width: 200px;
+  max-width: auto;
+  background-color: rgb(29, 148, 29);
+}
+
+.false-answer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 20px;
+  min-width: 200px;
+  max-width: auto;
+  background-color: red;
+}
+
 .answer-container{
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(20px + 2vmin);
+
 }
 
 h1{
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: black;
   min-width: auto;
   max-width: auto;
@@ -51,30 +83,30 @@ h1{
   align-items: center;
   justify-content: center;
   width: auto;
-  font-size: calc(20px + 2vmin);
-  border-radius: 20px;
+
+  border-radius: 10px;
   background-color: black;
 }
 
 .start-button{
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: black;
   min-width: auto;
   color : white
 }
 
 .next-button{
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: black;
   min-width: 200px;
   color : white
 }
 
 .restart-button{
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: black;
   min-width: auto;
-  color : white
+  color : white;
 }
 
 
@@ -82,8 +114,8 @@ h1{
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(40px + 2vmin);
-  border-radius: 20px;
+  font-size: calc(20px + 2vmin);
+  border-radius: 10px;
   min-width: 200px;
   max-width: auto;
   background-color: rgb(172, 121, 54);

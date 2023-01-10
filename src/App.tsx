@@ -7,6 +7,7 @@ import BackgroundImage from './images/background.jpg';
 //components
 import QuestionCard from './components/QuestionCard';
 import {VscDeviceCameraVideo} from 'react-icons/vsc';
+import {ImCheckmark} from 'react-icons/im';
 
 //hooks
 import { useState } from 'react';
@@ -22,9 +23,10 @@ type AnswerObject = {
 }
 
 const TotalQuestions = 10;
+let questionDifficulty:number;
 
 function App() {
-  
+  questionDifficulty = 0;
 
   const [loading,setLoading] = useState(false);
   const [questions,setQuestions] = useState<QuestionState[]>([]);
@@ -104,7 +106,7 @@ function App() {
           totalQuestions={TotalQuestions} 
           question={questions[number].question} 
           answers={questions[number].answers}
-          userAnswer={userAnswers ? userAnswers[number] : undefined}
+          userAnswer={userAnswers && userAnswers[number]}
           correctAnswer={questions[number].correct_answer}
           callback={checkAnswer}
         />
@@ -116,7 +118,7 @@ function App() {
             </button>
       }
 
-      {userAnswers.length == TotalQuestions && !loading &&
+      {userAnswers.length === TotalQuestions && !loading &&
         <>
           <div className='quiz-finished'>Quiz Finished!</div>
           <p>You got {score} out of 10 Questions correct!</p>
