@@ -1,7 +1,4 @@
 .spinner{
-    display: flex;
-    align-items: center;
-    justify-content: center;
     animation-name: spin;
     animation-duration: 1500ms;
     animation-iteration-count: infinite;

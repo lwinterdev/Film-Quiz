@@ -1,7 +1,4 @@
 .quiz-finished{
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-size: calc(20px + 2vmin);
     border-radius: 20px;
     min-width: 200px;
