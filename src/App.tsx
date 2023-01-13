@@ -144,8 +144,8 @@ function App() {
         /> */
       }
 
-      {/*difficultySelected &&
-        <p>{qestionDifficulty}</p>*/
+      {difficultySelected &&
+        <p>Difficulty: {qestionDifficulty}</p>
       }
 
       {!loading && difficultySelected &&
@@ -157,7 +157,8 @@ function App() {
           <div className='spinner'>
             <ImSpinner6/>
           </div>
-        </p>}
+        </p>
+      }
       
       {!loading && !gameOver && userAnswers.length !== TotalQuestions +1 && difficultySelected &&//show the questions and possible answers only when the game is not over yet
         <QuestionCard 
