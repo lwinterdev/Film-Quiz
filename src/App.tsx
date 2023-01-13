@@ -7,13 +7,14 @@ import BackgroundImage from './images/background.jpg';
 //components
 import QuestionCard from './components/QuestionCard';
 import {VscDeviceCameraVideo} from 'react-icons/vsc';
-import {ImCheckmark} from 'react-icons/im';
+import DifficultyButton from './components/DifficultyButton';
+import QuestionAmountButton from './components/QuestionAmountButton';
 
 //hooks
 import { useState } from 'react';
 
 import { fetchQuizQuestions } from './API';
-import { Difficulty, QuestionState } from './API';
+import { QuestionState } from './API';
 
 type AnswerObject = {
   question:string;
@@ -23,11 +24,12 @@ type AnswerObject = {
 }
 
 const TotalQuestions = 10;
-let questionDifficulty:number;
 
 function App() {
-  questionDifficulty = 0;
-
+  
+  const [qestionDifficulty,setQuestionDifficulty] = useState('easy');
+  const [questionAmount,setQuestionAmount] = useState(10);
+  const [difficultySelected,setDifficultySelected] = useState(false);
   const [loading,setLoading] = useState(false);
   const [questions,setQuestions] = useState<QuestionState[]>([]);
   const [number,setNumber] = useState(0);
@@ -35,12 +37,24 @@ function App() {
   const [score,setScore] = useState(0);
   const [gameOver,setGameOver] = useState(true);
 
- 
-  const startTrivia = async() => { //function to start the game
+
+  const chooseDifficulty = (difficulty:string) => { //function to select the difficulty
+    setDifficultySelected(true);
+    startTrivia(difficulty);
+  }
+
+  const handleQuestionAmountChange = (event:any) => {
+    setQuestionAmount(event.target.value);
+  }
+
+
+  const startTrivia = async(difficulty:any) => { //function to start the game
     setLoading(true);
 
+    setQuestionDifficulty(difficulty);
+
     const newQuestions = await fetchQuizQuestions(
-      TotalQuestions, Difficulty.EASY
+      TotalQuestions, difficulty
     );
 
     setQuestions(newQuestions);
@@ -49,9 +63,17 @@ function App() {
     setScore(0);
     setGameOver(false);
     setLoading(false);
-
-
   };
+
+
+  const resetGame = () => { //function to reset the game after finishing
+    setDifficultySelected(false);
+    setUserAnswers([]);
+    setNumber(0);
+    setScore(0);
+    setGameOver(false);
+    setLoading(false);
+  }
 
   
   const checkAnswer =(e: React.MouseEvent<HTMLButtonElement>) => { //function to check the answer the user has given
@@ -69,14 +91,12 @@ function App() {
 
     };
     setUserAnswers(prev => [...prev, answerObject])
-    
   };
 
 
   const nextQuestion = () =>{ //function to jump to next question
     const nextQuestion = number +1 ;
     setNumber(nextQuestion);
-
   };
 
   
@@ -88,19 +108,52 @@ function App() {
 
       <h1 className='p-4'>FILM QUIZ <VscDeviceCameraVideo style={{'marginBottom':'5px'}}/></h1>
       
-      {(gameOver ) && !loading && //show the start button only when the game is finished or not started yet
+      {(gameOver ) && !loading && difficultySelected && //show the start button only when the game is finished or not started yet
         <button className='start-button' onClick={startTrivia}>
           Start
         </button>
       }
+
       
-      { !loading &&
+      {!difficultySelected &&   //show difficulty selection only if not chosen yet
+        <div>
+          <p className='question p-2'>Select Difficulty</p>
+          
+          <DifficultyButton
+            difficulty = 'Easy'
+            callback = {() =>chooseDifficulty('easy')}
+          />
+
+          <DifficultyButton
+            difficulty = 'Medium'
+            callback = {() =>chooseDifficulty('medium')}
+          />
+
+          <DifficultyButton
+            difficulty = 'Hard'
+            callback = {() =>chooseDifficulty('hard')}
+          />
+        </div>
+      }
+
+      { /* TODO
+        <QuestionAmountButton
+          callback={setQuestionAmount}
+          amount={TotalQuestions}
+        /> */
+      }
+
+      {/*difficultySelected &&
+        <p>{qestionDifficulty}</p>*/
+      }
+
+      {!loading && difficultySelected &&
         <p>Score: {score}</p>
       }
 
       {loading && <p>Loading Questions...</p>}
       
-      {!loading && !gameOver && userAnswers.length !== TotalQuestions +1 && //show the questions and possible answers only when the game is not over yet
+      {!loading && !gameOver && userAnswers.length !== TotalQuestions +1 && difficultySelected &&//show the questions and possible answers only when the game is not over yet
         <QuestionCard 
           questionNumber={number + 1} 
           totalQuestions={TotalQuestions} 
@@ -118,7 +171,7 @@ function App() {
             </button>
       }
 
-      {userAnswers.length === TotalQuestions && !loading &&
+      {userAnswers.length === TotalQuestions && !loading && //show the final score after game is finished
         <>
           <div className='quiz-finished'>Quiz Finished!</div>
           <p>You got {score} out of 10 Questions correct!</p>
@@ -126,7 +179,7 @@ function App() {
       }
 
       {(!gameOver && userAnswers.length === TotalQuestions ) && !loading && //show the start button only when the game is finished or not started yet
-        <button className='start-button' onClick={startTrivia}>
+        <button className='start-button' onClick={resetGame}>
           Try Again
         </button>
       }
