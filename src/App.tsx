@@ -154,20 +154,32 @@ function App() {
         /> */
       }
 
+    
+
       {difficultySelected && //show current difficulty only if selected
         <p>Difficulty: {qestionDifficulty}</p>
       }
 
       {!loading && difficultySelected && //show current score only if difficulty selected
-        <p>Score: {score}</p>
+        <p>Score: {score}
+          
+          {/*!loading && difficultySelected && !gameOver &&//show current reset button only if difficulty selected
+            <button className='start-button' onClick={resetGame}>
+              Reset
+            </button>*/
+          }
+
+        </p>
+
+
       }
 
       {loading && 
-        <p>Loading Questions... 
+        <div>Loading Questions... 
           <div className='spinner'>
             <ImSpinner6/>
           </div>
-        </p>
+        </div>
       }
       
       {!loading && !gameOver && userAnswers.length !== questionAmount +1 && difficultySelected &&//show the questions and possible answers only when the game is not over yet
@@ -187,6 +199,8 @@ function App() {
               Next
             </button>
       }
+
+
 
       {userAnswers.length === questionAmount && !loading && //show the final score after game is finished
         <>
