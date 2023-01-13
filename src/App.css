@@ -18,12 +18,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
   color: white;
 }
 
 .difficulty-button{
- 
   border-radius: 20px;
   min-width: 200px;
   max-width: auto;
@@ -31,11 +29,29 @@
 }
 
 .difficulty-button:active{
-
   border-radius: 20px;
   min-width: 200px;
   max-width: auto;
   background-color: rgb(12, 76, 97);
+}
+
+.spinner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation-name: spin;
+  animation-duration: 1500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out; 
+}
+
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
 }
 
 .answer{
@@ -107,23 +123,24 @@ h1{
 
 .start-button{
   border-radius: 20px;
-  background-color: black;
   min-width: auto;
-  color : white
+  background-color : #004e68;
+  color: white
 }
 
 .next-button{
   border-radius: 20px;
-  background-color: black;
   min-width: 200px;
-  color : white
+  background-color : #004e68;
+  color: white
 }
 
 .restart-button{
   border-radius: 20px;
   background-color: black;
   min-width: auto;
-  color : white;
+  background-color : #004e68;
+  color: white
 }
 
 .small-button{

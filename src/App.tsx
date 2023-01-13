@@ -7,6 +7,7 @@ import BackgroundImage from './images/background.jpg';
 //components
 import QuestionCard from './components/QuestionCard';
 import {VscDeviceCameraVideo} from 'react-icons/vsc';
+import {ImSpinner6} from 'react-icons/im';
 import DifficultyButton from './components/DifficultyButton';
 import QuestionAmountButton from './components/QuestionAmountButton';
 
@@ -151,7 +152,12 @@ function App() {
         <p>Score: {score}</p>
       }
 
-      {loading && <p>Loading Questions...</p>}
+      {loading && 
+        <p>Loading Questions... 
+          <div className='spinner'>
+            <ImSpinner6/>
+          </div>
+        </p>}
       
       {!loading && !gameOver && userAnswers.length !== TotalQuestions +1 && difficultySelected &&//show the questions and possible answers only when the game is not over yet
         <QuestionCard 
