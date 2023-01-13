@@ -11,9 +11,19 @@ import {ImSpinner6} from 'react-icons/im';
 import DifficultyButton from './components/DifficultyButton';
 import QuestionAmountButton from './components/QuestionAmountButton';
 
+//styles
+import './styles/answer.css';
+import './styles/difficultyButton.css';
+import './styles/spinner.css';
+import './styles/question.css';
+import './styles/startButton.css';
+import './styles/nextButton.css';
+import './styles/restartButton.css';
+import './styles/smallButton.css';
+import './styles/quizFinished.css';
+
 //hooks
 import { useState } from 'react';
-
 import { fetchQuizQuestions } from './API';
 import { QuestionState } from './API';
 
@@ -24,7 +34,6 @@ type AnswerObject = {
   correctAnswer:string;
 }
 
-const TotalQuestions = 10;
 
 function App() {
   
@@ -44,6 +53,7 @@ function App() {
     startTrivia(difficulty);
   }
 
+
   const handleQuestionAmountChange = (event:any) => {
     setQuestionAmount(event.target.value);
   }
@@ -55,7 +65,7 @@ function App() {
     setQuestionDifficulty(difficulty);
 
     const newQuestions = await fetchQuizQuestions(
-      TotalQuestions, difficulty
+      questionAmount, difficulty
     );
 
     setQuestions(newQuestions);
@@ -140,15 +150,15 @@ function App() {
       { /* TODO
         <QuestionAmountButton
           callback={setQuestionAmount}
-          amount={TotalQuestions}
+          amount={questionAmount}
         /> */
       }
 
-      {difficultySelected &&
+      {difficultySelected && //show current difficulty only if selected
         <p>Difficulty: {qestionDifficulty}</p>
       }
 
-      {!loading && difficultySelected &&
+      {!loading && difficultySelected && //show current score only if difficulty selected
         <p>Score: {score}</p>
       }
 
@@ -160,10 +170,10 @@ function App() {
         </p>
       }
       
-      {!loading && !gameOver && userAnswers.length !== TotalQuestions +1 && difficultySelected &&//show the questions and possible answers only when the game is not over yet
+      {!loading && !gameOver && userAnswers.length !== questionAmount +1 && difficultySelected &&//show the questions and possible answers only when the game is not over yet
         <QuestionCard 
           questionNumber={number + 1} 
-          totalQuestions={TotalQuestions} 
+          questionAmount={questionAmount} 
           question={questions[number].question} 
           answers={questions[number].answers}
           userAnswer={userAnswers && userAnswers[number]}
@@ -172,28 +182,27 @@ function App() {
         />
       }
       
-      {!gameOver && !loading && userAnswers.length === number + 1 && number !== TotalQuestions -1&& //show next button only if the game is currently active or last question has not yet been reached
+      {!gameOver && !loading && userAnswers.length === number + 1 && number !== questionAmount -1&& //show next button only if the game is currently active or last question has not yet been reached
             <button className='m-4 next-button ' onClick={nextQuestion}>
               Next
             </button>
       }
 
-      {userAnswers.length === TotalQuestions && !loading && //show the final score after game is finished
+      {userAnswers.length === questionAmount && !loading && //show the final score after game is finished
         <>
           <div className='quiz-finished'>Quiz Finished!</div>
           <p>You got {score} out of 10 Questions correct!</p>
         </>
       }
 
-      {(!gameOver && userAnswers.length === TotalQuestions ) && !loading && //show the start button only when the game is finished or not started yet
+      {(!gameOver && userAnswers.length === questionAmount ) && !loading && //show the start button only when the game is finished or not started yet
         <button className='start-button' onClick={resetGame}>
           Try Again
         </button>
       }
 
       
-
-    </div>
+      </div>
   );
 }
 

@@ -6,17 +6,17 @@ type Props = {
   callback: any;
   userAnswer: any;
   questionNumber: number;
-  totalQuestions: number;
+  questionAmount: number;
   correctAnswer: string
 
 }
 
-const QuestionCard:React.FC<Props> = ({question, answers, callback, userAnswer, questionNumber, totalQuestions, correctAnswer}) => {
+const QuestionCard:React.FC<Props> = ({question, answers, callback, userAnswer, questionNumber, questionAmount, correctAnswer}) => {
 
   return (
 
     <div>
-      <p>Question: {questionNumber} / {totalQuestions}</p>
+      <p>Question: {questionNumber} / {questionAmount}</p>
       <p className='question p-2' dangerouslySetInnerHTML={{__html: question}}></p>
       
       <div>
