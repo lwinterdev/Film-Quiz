@@ -101,7 +101,7 @@ function App() {
       correctAnswer: questions[number].correct_answer
 
     };
-    setUserAnswers(prev => [...prev, answerObject])
+    setUserAnswers(prev => [...prev, answerObject]);
   };
 
 
@@ -112,108 +112,104 @@ function App() {
 
   
   return (
-    <div className="App" style={{ backgroundImage: `url(${BackgroundImage})`,
+    <div className="" style={{ backgroundImage: `url(${BackgroundImage})`,
                                   backgroundPosition: 'center',
                                   backgroundSize: 'cover',
-                                  backgroundRepeat: 'no-repeat'}}>
+                                  backgroundRepeat: 'no-repeat',
+                                  height: '100vh'}}>
+      <div className='App-header'>                              
+        <h1 className='p-2'>FILM QUIZ <VscDeviceCameraVideo style={{'marginBottom':'5px'}}/></h1>
+        
+        {(gameOver ) && !loading && difficultySelected && //show the start button only when the game is finished or not started yet
+          <button className='start-button' onClick={startTrivia}>
+            Start
+          </button>
+        }
 
-      <h1 className='p-4'>FILM QUIZ <VscDeviceCameraVideo style={{'marginBottom':'5px'}}/></h1>
-      
-      {(gameOver ) && !loading && difficultySelected && //show the start button only when the game is finished or not started yet
-        <button className='start-button' onClick={startTrivia}>
-          Start
-        </button>
-      }
+        {!difficultySelected &&   //show difficulty selection only if not chosen yet
+          <div>
+            <p className='question p-2'>Select Difficulty</p>
+            
+            <DifficultyButton
+              difficulty = 'Easy'
+              callback = {() =>chooseDifficulty('easy')}
+            />
 
-      
-      {!difficultySelected &&   //show difficulty selection only if not chosen yet
-        <div>
-          <p className='question p-2'>Select Difficulty</p>
-          
-          <DifficultyButton
-            difficulty = 'Easy'
-            callback = {() =>chooseDifficulty('easy')}
-          />
+            <DifficultyButton
+              difficulty = 'Medium'
+              callback = {() =>chooseDifficulty('medium')}
+            />
 
-          <DifficultyButton
-            difficulty = 'Medium'
-            callback = {() =>chooseDifficulty('medium')}
-          />
-
-          <DifficultyButton
-            difficulty = 'Hard'
-            callback = {() =>chooseDifficulty('hard')}
-          />
-        </div>
-      }
-
-      { /* TODO
-        <QuestionAmountButton
-          callback={setQuestionAmount}
-          amount={questionAmount}
-        /> */
-      }
-
-    
-
-      {difficultySelected && //show current difficulty only if selected
-        <p>Difficulty: {qestionDifficulty}</p>
-      }
-
-      {!loading && difficultySelected && //show current score only if difficulty selected
-        <p>Score: {score}
-          
-          {/*!loading && difficultySelected && !gameOver &&//show current reset button only if difficulty selected
-            <button className='start-button' onClick={resetGame}>
-              Reset
-            </button>*/
-          }
-
-        </p>
-
-
-      }
-
-      {loading && 
-        <div>Loading Questions... 
-          <div className='spinner'>
-            <ImSpinner6/>
+            <DifficultyButton
+              difficulty = 'Hard'
+              callback = {() =>chooseDifficulty('hard')}
+            />
           </div>
-        </div>
-      }
+        }
+
+        { /* TODO
+          <QuestionAmountButton
+            callback={setQuestionAmount}
+            amount={questionAmount}
+          /> */
+        }
+
+        {difficultySelected && //show current difficulty only if selected
+          <p>Difficulty: {qestionDifficulty}</p>
+        }
+
+        {!gameOver && !loading && difficultySelected && userAnswers.length !== questionAmount && //show current score only if difficulty selected
+          <p>Score: {score}
+            
+            {/*!loading && difficultySelected && !gameOver &&//show current reset button only if difficulty selected
+              <button className='start-button' onClick={resetGame}>
+                Reset
+              </button>*/
+            }
+
+          </p>
+        }
+
+        {userAnswers.length === questionAmount && !loading && //show the final score after game is finished
+          <p className='quiz-finished'>You got {score} out of 10 Questions correct!</p>
+        }
+
+        {loading && 
+          <div>Loading Questions... 
+            <div className='spinner'>
+              <ImSpinner6/>
+            </div>
+          </div>
+        }
+      </div>
       
-      {!loading && !gameOver && userAnswers.length !== questionAmount +1 && difficultySelected &&//show the questions and possible answers only when the game is not over yet
-        <QuestionCard 
-          questionNumber={number + 1} 
-          questionAmount={questionAmount} 
-          question={questions[number].question} 
-          answers={questions[number].answers}
-          userAnswer={userAnswers && userAnswers[number]}
-          correctAnswer={questions[number].correct_answer}
-          callback={checkAnswer}
-        />
-      }
+      <div className='App'>
       
-      {!gameOver && !loading && userAnswers.length === number + 1 && number !== questionAmount -1&& //show next button only if the game is currently active or last question has not yet been reached
-            <button className='m-4 next-button ' onClick={nextQuestion}>
-              Next
-            </button>
-      }
+        {!loading && !gameOver && userAnswers.length !== questionAmount +1 && difficultySelected &&//show the questions and possible answers only when the game is not over yet
+          <QuestionCard 
+            questionNumber={number + 1} 
+            questionAmount={questionAmount} 
+            question={questions[number].question} 
+            answers={questions[number].answers}
+            userAnswer={userAnswers && userAnswers[number]}
+            correctAnswer={questions[number].correct_answer}
+            callback={checkAnswer}
+          />
+        }
 
+        {!gameOver && !loading && userAnswers.length === number + 1 && number !== questionAmount -1&& //show next button only if the game is currently active or last question has not yet been reached
+              <button className='m-1 next-button ' onClick={nextQuestion}>
+                Next
+              </button>
+        }
 
+        {(!gameOver && userAnswers.length === questionAmount ) && !loading && //show the start button only when the game is finished or not started yet
+          <button className='start-button' onClick={resetGame}>
+            Try Again
+          </button>
+        }
 
-      {userAnswers.length === questionAmount && !loading && //show the final score after game is finished
-        <>
-          <div className='quiz-finished'>Quiz Finished!</div>
-          <p>You got {score} out of 10 Questions correct!</p>
-        </>
-      }
-
-      {(!gameOver && userAnswers.length === questionAmount ) && !loading && //show the start button only when the game is finished or not started yet
-        <button className='start-button' onClick={resetGame}>
-          Try Again
-        </button>
-      }
+      </div>
 
       
       </div>
