@@ -1,14 +1,13 @@
 .answer{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
    
-    border-radius: 20px;
-    min-width: 50vw;
-    max-width: auto;
-    background-color: rgb(198, 241, 255);
-    
-  }
+  border-radius: 20px;
+  min-width: 50vw;
+  max-width: auto;
+  background-color: rgb(198, 241, 255);
+}
   
   .answer:focus{
     display: flex;

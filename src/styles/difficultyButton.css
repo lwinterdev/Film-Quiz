@@ -1,13 +1,13 @@
 .difficulty-button{
-    border-radius: 20px;
-    min-width: 200px;
-    max-width: auto;
-    background-color: rgb(198, 241, 255);
-  }
+  border-radius: 20px;
+  min-width: 200px;
+  max-width: auto;
+  background-color: rgb(198, 241, 255);
+}
   
-  .difficulty-button:active{
-    border-radius: 20px;
-    min-width: 200px;
-    max-width: auto;
-    background-color: rgb(12, 76, 97);
-  }
+.difficulty-button:active{
+  border-radius: 20px;
+  min-width: 200px;
+  max-width: auto;
+  background-color: rgb(12, 76, 97);
+}

@@ -1,4 +1,8 @@
 .question{
     border-radius: 20px;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
+    max-height: 20vh;
+    min-width: 80vw;
+    justify-content: center;
+    align-items: center;
   }

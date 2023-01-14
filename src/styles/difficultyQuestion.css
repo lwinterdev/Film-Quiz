@@ -1,7 +1,9 @@
 .difficulty{
-
     border-radius: 20px;
     background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
 

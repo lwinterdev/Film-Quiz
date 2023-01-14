@@ -113,21 +113,53 @@ function App() {
   
   return (
     <div className="" style={{ backgroundImage: `url(${BackgroundImage})`,
-                                  backgroundPosition: 'center',
-                                  backgroundSize: 'cover',
-                                  backgroundRepeat: 'no-repeat',
-                                  height: '100vh'}}>
+                               backgroundPosition: 'center',
+                               backgroundSize: 'cover',
+                               backgroundRepeat: 'no-repeat',
+                               height: '100vh'}}>
+                                    
       <div className='App-header'>                              
         <h1 className='p-2'>FILM QUIZ <VscDeviceCameraVideo style={{'marginBottom':'5px'}}/></h1>
         
-        {(gameOver ) && !loading && difficultySelected && //show the start button only when the game is finished or not started yet
+        {gameOver && !loading && difficultySelected && //show the start button only when the game is finished or not started yet
           <button className='start-button' onClick={startTrivia}>
             Start
           </button>
         }
 
+        { /* TODO
+          <QuestionAmountButton
+            callback={setQuestionAmount}
+            amount={questionAmount}
+          /> */
+        }
+
+        {difficultySelected && //show current difficulty only if selected
+          <p>Difficulty: {qestionDifficulty}</p>
+        }
+
+        {!gameOver && !loading && difficultySelected && userAnswers.length !== questionAmount && //show current score only if difficulty selected
+          <p>Score: {score}</p>    
+        }
+
+        {userAnswers.length === questionAmount && !loading && //show the final score after game is finished
+          <p className='quiz-finished'>You got {score} out of 10 Questions correct!</p>
+        }
+
+        {loading && 
+          <div>Loading Questions... 
+            <div className='spinner'>
+              <ImSpinner6/>
+            </div>
+          </div>
+        }
+      </div>
+      
+      <div className='App'>
+
         {!difficultySelected &&   //show difficulty selection only if not chosen yet
-          <div>
+          <div className='question'>
+        
             <p className='question p-2'>Select Difficulty</p>
             
             <DifficultyButton
@@ -146,44 +178,6 @@ function App() {
             />
           </div>
         }
-
-        { /* TODO
-          <QuestionAmountButton
-            callback={setQuestionAmount}
-            amount={questionAmount}
-          /> */
-        }
-
-        {difficultySelected && //show current difficulty only if selected
-          <p>Difficulty: {qestionDifficulty}</p>
-        }
-
-        {!gameOver && !loading && difficultySelected && userAnswers.length !== questionAmount && //show current score only if difficulty selected
-          <p>Score: {score}
-            
-            {/*!loading && difficultySelected && !gameOver &&//show current reset button only if difficulty selected
-              <button className='start-button' onClick={resetGame}>
-                Reset
-              </button>*/
-            }
-
-          </p>
-        }
-
-        {userAnswers.length === questionAmount && !loading && //show the final score after game is finished
-          <p className='quiz-finished'>You got {score} out of 10 Questions correct!</p>
-        }
-
-        {loading && 
-          <div>Loading Questions... 
-            <div className='spinner'>
-              <ImSpinner6/>
-            </div>
-          </div>
-        }
-      </div>
-      
-      <div className='App'>
       
         {!loading && !gameOver && userAnswers.length !== questionAmount +1 && difficultySelected &&//show the questions and possible answers only when the game is not over yet
           <QuestionCard 
@@ -198,9 +192,9 @@ function App() {
         }
 
         {!gameOver && !loading && userAnswers.length === number + 1 && number !== questionAmount -1&& //show next button only if the game is currently active or last question has not yet been reached
-              <button className='m-1 next-button ' onClick={nextQuestion}>
-                Next
-              </button>
+          <button className='m-1 next-button ' onClick={nextQuestion}>
+            Next
+          </button>
         }
 
         {(!gameOver && userAnswers.length === questionAmount ) && !loading && //show the start button only when the game is finished or not started yet
@@ -212,7 +206,7 @@ function App() {
       </div>
 
       
-      </div>
+    </div>
   );
 }
 
