@@ -7,20 +7,22 @@
   min-width: 50vw;
   max-width: auto;
   background-color: rgb(198, 241, 255);
+  background-image: linear-gradient(to bottom right, rgb(198, 241, 255), rgb(156, 97, 252));
 }
-  
-  .answer:focus{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+.answer:focus{
+  display: flex;
+  align-items: center;
+  justify-content: center;
    
-    border-radius: 20px;
-    min-width: 50vw;
-    max-width: auto;
-    background-color: rgb(12, 76, 97);
-  }
-  
-  .correct-answer{
+  border-radius: 20px;
+  min-width: 50vw;
+  max-width: auto;
+  background-color: rgb(198, 241, 255);
+  background-image: linear-gradient(to bottom right, rgb(11, 180, 236), rgb(110, 26, 245));
+}
+
+.correct-answer{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,6 +31,7 @@
     min-width: 50vw;
     max-width: auto;
     background-color: rgb(29, 148, 29);
+    background-image: linear-gradient(to bottom right, rgb(29, 148, 29), rgb(196, 243, 194));
   }
   
   .false-answer{
@@ -47,3 +50,31 @@
     align-items: center;
     justify-content: center;
   }
+
+
+  @media (max-width: 1024px) {
+    .answer{
+      min-width: 80vw;
+    }
+  
+    .correct-answer{
+      min-width: 80vw;
+    }
+  
+    .false-answer{
+      min-width: 80vw;
+    }
+  
+    .answer-container{
+      min-width: 80vw;
+    }
+  
+    .answer:focus{
+      min-width: 80vw;
+    }
+  
+    .answer:active{
+      min-width: 80vw;
+    }
+  }
+  

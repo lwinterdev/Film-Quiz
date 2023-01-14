@@ -3,6 +3,7 @@
   min-width: 200px;
   max-width: auto;
   background-color: rgb(198, 241, 255);
+  background-image: linear-gradient(to bottom right, rgb(198, 241, 255), rgb(156, 97, 252));
 }
   
 .difficulty-button:active{
@@ -10,4 +11,5 @@
   min-width: 200px;
   max-width: auto;
   background-color: rgb(12, 76, 97);
+  background-image: linear-gradient(to bottom right, rgb(11, 180, 236), rgb(110, 26, 245));
 }

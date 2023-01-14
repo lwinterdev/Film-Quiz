@@ -5,4 +5,13 @@
     min-width: 80vw;
     justify-content: center;
     align-items: center;
+    color: white;
+    background-color: black;
   }
+
+@media (max-width:1024px){
+  .question{
+    min-width: 100vw;
+    min-height: 15vh;
+  }
+}

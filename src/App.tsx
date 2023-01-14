@@ -112,7 +112,7 @@ function App() {
 
   
   return (
-    <div className="" style={{ backgroundImage: `url(${BackgroundImage})`,
+    <div style={{ backgroundImage: `url(${BackgroundImage})`,
                                backgroundPosition: 'center',
                                backgroundSize: 'cover',
                                backgroundRepeat: 'no-repeat',
@@ -158,7 +158,7 @@ function App() {
       <div className='App'>
 
         {!difficultySelected &&   //show difficulty selection only if not chosen yet
-          <div className='question'>
+          <div className=''>
         
             <p className='question p-2'>Select Difficulty</p>
             
@@ -192,13 +192,13 @@ function App() {
         }
 
         {!gameOver && !loading && userAnswers.length === number + 1 && number !== questionAmount -1&& //show next button only if the game is currently active or last question has not yet been reached
-          <button className='m-1 next-button ' onClick={nextQuestion}>
+          <button className='m-1 next-button' onClick={nextQuestion}>
             Next
           </button>
         }
 
         {(!gameOver && userAnswers.length === questionAmount ) && !loading && //show the start button only when the game is finished or not started yet
-          <button className='start-button' onClick={resetGame}>
+          <button className='m-1 next-button' onClick={resetGame}>
             Try Again
           </button>
         }

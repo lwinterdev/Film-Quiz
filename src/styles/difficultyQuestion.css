@@ -1,10 +1,12 @@
 .difficulty{
     border-radius: 20px;
-    background-color: black;
-    display: flex;
-    align-items: center;
+    background-color: rgb(0, 0, 0);
+    max-height: 20vh;
+    min-width: 80vw;
     justify-content: center;
-  }
-
+    align-items: center;
+    color: black;
+    background-image: linear-gradient(to bottom right, rgb(255, 166, 0), rgb(231, 231, 40));
+}
 
 
