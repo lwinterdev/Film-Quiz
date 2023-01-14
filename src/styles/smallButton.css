@@ -1,6 +1,38 @@
 .small-button{
     border-radius: 20px;
-    background-color: black;
+    background-color: gray;
     min-width: auto;
     color : white;
+    margin: 4px;
+    min-width: 3vw;
   }
+
+  .small-button:active{
+    border-radius: 20px;
+    background-color: rgb(21, 103, 209);
+    min-width: auto;
+    color : white;
+    margin: 4px;
+    min-width: 3vw;
+  }
+
+@media (max-width: 1024) {
+  .small-button{
+    border-radius: 20px;
+    background-color: gray;
+    min-width: auto;
+    color : white;
+    margin: 4px;
+    min-width: 200px;
+  }
+
+  .small-button:active{
+    border-radius: 20px;
+    background-color: rgb(21, 103, 209);
+    min-width: auto;
+    color : white;
+    margin: 4px;
+    min-width: 10vw;
+  }
+  
+}
