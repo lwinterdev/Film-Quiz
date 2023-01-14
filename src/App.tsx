@@ -37,7 +37,7 @@ type AnswerObject = {
 
 function App() {
   
-  const [qestionDifficulty,setQuestionDifficulty] = useState('easy');
+  const [questionDifficulty,setQuestionDifficulty] = useState('easy');
   const [questionAmount,setQuestionAmount] = useState(10);
   const [difficultySelected,setDifficultySelected] = useState(false);
   const [loading,setLoading] = useState(false);
@@ -54,7 +54,7 @@ function App() {
   }
 
 
-  const handleQuestionAmountChange = (amount:number) => {
+  const handleQuestionAmountChange = (amount:number) => { //function to change the amount of questions
     setQuestionAmount(prev => prev + amount);
     if (questionAmount > 50){setQuestionAmount(50)};
     if (questionAmount < 10){setQuestionAmount(10)};
@@ -111,9 +111,8 @@ function App() {
   const nextQuestion = () =>{ //function to jump to next question
     const nextQuestion = number +1 ;
     setNumber(nextQuestion);
-    
-    
   };
+
 
   const showEndResult = () => { //function to end the game
     setGameOver(true);
@@ -147,7 +146,7 @@ function App() {
         
 
         {difficultySelected && //show current difficulty only if selected
-          <p>Difficulty: {qestionDifficulty}</p>
+          <p>Difficulty: {questionDifficulty}</p>
         }
 
         {!gameOver && !loading && difficultySelected && userAnswers.length !== questionAmount +1 && //show current score only if difficulty selected
@@ -214,9 +213,9 @@ function App() {
         {(gameOver && userAnswers.length === questionAmount ) && !loading && //show the end screen if last answer was given
         <div>
           <p className='p-1 quiz-finished'>You got {score} out of {questionAmount} Questions correct!</p>
-          <div>
-            
-          </div>
+          {/*<div> 
+            TODO: Show the score for each single answer 
+          </div>*/}
           <button className='m-1 next-button' onClick={resetGame}>
             Try Again
           </button>
