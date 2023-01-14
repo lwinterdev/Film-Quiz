@@ -7,7 +7,7 @@
   min-width: 50vw;
   max-width: auto;
   background-color: rgb(198, 241, 255);
-  background-image: linear-gradient(to bottom right, rgb(198, 241, 255), rgb(156, 97, 252));
+  background-image: linear-gradient(to bottom right, rgb(198, 241, 255), rgb(167, 124, 241));
 }
 
 .answer:focus{
@@ -18,8 +18,7 @@
   border-radius: 20px;
   min-width: 50vw;
   max-width: auto;
-  background-color: rgb(198, 241, 255);
-  background-image: linear-gradient(to bottom right, rgb(11, 180, 236), rgb(110, 26, 245));
+  background-image: linear-gradient(to bottom right, rgb(11, 180, 236), rgb(173, 125, 250));
 }
 
 .correct-answer{
@@ -30,7 +29,6 @@
     border-radius: 20px;
     min-width: 50vw;
     max-width: auto;
-    background-color: rgb(29, 148, 29);
     background-image: linear-gradient(to bottom right, rgb(29, 148, 29), rgb(196, 243, 194));
   }
   
