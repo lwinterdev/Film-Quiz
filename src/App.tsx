@@ -199,31 +199,28 @@ function App() {
           />
         }
 
-        {gameOver && !loading && !difficultySelected &&  //show the final score after game is finished
-          <div>
-            <p className='p-1 quiz-finished'>You got {score} out of {questionAmount} Questions correct!</p>
-            <div>
-   
-            </div>
-          </div>
-        }
-        
         {!gameOver && !loading && userAnswers.length === number + 1 && number !== questionAmount -1&& //show next button only if the game is currently active or last question has not yet been reached
           <button className='m-1 next-button' onClick={nextQuestion}>
             Next
           </button>
         }
 
-        {(!gameOver && userAnswers.length === questionAmount ) && !loading && //show the next button if answer was given
+        {(!gameOver && userAnswers.length === questionAmount ) && !loading && //show the finish button if last question was reached
           <button className='m-1 next-button' onClick={showEndResult}>
             Finish
           </button>
         }
 
-        {(gameOver && userAnswers.length === questionAmount ) && !loading && //show finish button if the last question was reached
+        {(gameOver && userAnswers.length === questionAmount ) && !loading && //show the end screen if last answer was given
+        <div>
+          <p className='p-1 quiz-finished'>You got {score} out of {questionAmount} Questions correct!</p>
+          <div>
+            
+          </div>
           <button className='m-1 next-button' onClick={resetGame}>
             Try Again
           </button>
+        </div>
         }
 
       </div>
