@@ -4,7 +4,7 @@
     min-width: auto;
     color : white;
     margin: 4px;
-    min-width: 3vw;
+    min-width: 5vw;
   }
 
   .small-button:active{
@@ -13,7 +13,7 @@
     min-width: auto;
     color : white;
     margin: 4px;
-    min-width: 3vw;
+    min-width: 5vw;
   }
 
   .small-button:disabled{
@@ -22,17 +22,17 @@
     color : gray;
     background-color: rgb(106, 106, 107);
     margin: 4px;
-    min-width: 3vw;
+    min-width: 5vw;
   }
 
-@media (max-width: 1024) {
+ @media (max-width: 720px)  {
   .small-button{
     border-radius: 20px;
     background-color: gray;
     min-width: auto;
-    color : red;
+    color : white;
     margin: 4px;
-    min-width: 10vw;
+    min-width: 30vw;
   }
 
   .small-button:active{
@@ -41,7 +41,16 @@
     min-width: auto;
     color : white;
     margin: 4px;
-    min-width: 10vw;
+    min-width: 30vw;
+  }
+
+  .small-button:disabled{
+    border-radius: 20px;
+    min-width: auto;
+    color : gray;
+    background-color: rgb(106, 106, 107);
+    margin: 4px;
+    min-width: 30vw;
   }
   
 }

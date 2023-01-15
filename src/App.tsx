@@ -161,8 +161,6 @@ function App() {
 
           </div>
 
-          
-          
         }
 
         {!difficultySelected && //show difficulty selection only if not chosen yet
