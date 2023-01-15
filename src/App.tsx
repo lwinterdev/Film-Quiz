@@ -10,6 +10,7 @@ import {VscDeviceCameraVideo} from 'react-icons/vsc';
 import {ImSpinner6} from 'react-icons/im';
 import DifficultyButton from './components/DifficultyButton';
 import QuestionAmountButton from './components/QuestionAmountButton';
+import GrainToggleButton from './components/GrainToggleButton';
 
 //styles
 import './styles/answer.css';
@@ -21,6 +22,7 @@ import './styles/nextButton.css';
 import './styles/restartButton.css';
 import './styles/smallButton.css';
 import './styles/quizFinished.css';
+import './styles/toggleButton.css';
 
 //hooks
 import { useState } from 'react';
@@ -46,6 +48,8 @@ function App() {
   const [userAnswers,setUserAnswers] = useState<AnswerObject[]>([]);
   const [score,setScore] = useState(0);
   const [gameOver,setGameOver] = useState(false);
+  const [grainToggle,setGrainToggle] = useState(true);
+  
 
 
   const chooseDifficulty = (difficulty:string) => { //function to select the difficulty
@@ -73,6 +77,7 @@ function App() {
     setScore(0);
     setGameOver(false);
     setLoading(false);
+ 
   };
 
 
@@ -83,6 +88,7 @@ function App() {
     setScore(0);
     setGameOver(false);
     setLoading(false);
+  
   }
 
   
@@ -97,10 +103,10 @@ function App() {
       question: questions[number].question,
       answer,
       correct,
-      correctAnswer: questions[number].correct_answer
-
+      correctAnswer: questions[number].correct_answer,
     };
-    setUserAnswers(prev => [...prev, answerObject]);
+    setUserAnswers((prev) => [...prev, answerObject]);
+    
   };
 
 
@@ -114,18 +120,27 @@ function App() {
     setGameOver(true);
   }
 
+  const handleGrainToggle = () => {
+    setGrainToggle(!grainToggle);
+  }
+
   
   return (
-    <div style={{ backgroundImage: `url(${BackgroundImage})`,
+    <div className={grainToggle ? 'grain-active': ''}
+         style={{ backgroundImage: `url(${BackgroundImage})`,
                                backgroundPosition: 'center',
                                backgroundSize: 'cover',
                                backgroundRepeat: 'no-repeat',
                                height: '100vh'}}>
-
-                                
-                                    
+      <GrainToggleButton             
+            label="Film Grain"
+            toggled={grainToggle}
+            onClick={handleGrainToggle} 
+       />     
+      
+      
       <div className='App-header'>   
-                               
+      
         <h1 className='p-2'>FILM QUIZ <VscDeviceCameraVideo style={{'marginBottom':'5px'}}/></h1>
         
         {difficultySelected && //show current difficulty only if selected
@@ -184,7 +199,7 @@ function App() {
             />
           </div>
         }
-
+        
 
         {/*(!gameOver && difficultySelected ) && !loading && //show the start button if difficulty chosen
           <button className='m-1 start-button' onClick={() => startTrivia(questionDifficulty)}>
@@ -219,10 +234,8 @@ function App() {
         {(gameOver && userAnswers.length === questionAmount ) && !loading && //show the end screen if last answer was given
         <div>
           
-          <div className='end-image'>Fin</div>
-          {/*<div> 
-            TODO: Show the score for each single answer 
-          </div>*/}
+          <div className={'end-image'}>Fin</div>
+          
           <p className='p-1 quiz-finished'>You got {score} out of {questionAmount} Questions correct!</p>
           <button className='m-1 next-button' onClick={resetGame}>
             Try Again

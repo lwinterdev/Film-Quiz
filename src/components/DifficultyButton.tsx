@@ -10,7 +10,7 @@ const DifficultyButton:React.FC<Props> = ({difficulty,callback}) => {
  
     return (
         <button className='difficulty-button' onClick={callback}>
-            <span>{difficulty}</span>
+            <div>{difficulty}</div>
         </button>
     )
 }
