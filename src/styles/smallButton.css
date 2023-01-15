@@ -16,14 +16,23 @@
     min-width: 3vw;
   }
 
+  .small-button:disabled{
+    border-radius: 20px;
+    min-width: auto;
+    color : gray;
+    background-color: rgb(106, 106, 107);
+    margin: 4px;
+    min-width: 3vw;
+  }
+
 @media (max-width: 1024) {
   .small-button{
     border-radius: 20px;
     background-color: gray;
     min-width: auto;
-    color : white;
+    color : red;
     margin: 4px;
-    min-width: 200px;
+    min-width: 10vw;
   }
 
   .small-button:active{

@@ -8,6 +8,7 @@
   color: white;
 }
 
+
 .App-header {
   text-align: center;
   display: flex;
@@ -16,6 +17,7 @@
   justify-content: center;
   font-size: calc(12px + 2vmin);
   color: white;
+
 }
 
 h1{
@@ -24,6 +26,8 @@ h1{
   min-width: auto;
   max-width: auto;
 }
+
+
 
 
 

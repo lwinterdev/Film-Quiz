@@ -12,12 +12,23 @@
     background-image: linear-gradient(to bottom right, rgb(41, 131, 161), rgb(4, 74, 77));
   }
 
+  .next-button:focus{
+    border-radius: 20px;
+    min-width: 200px;
+    color: rgb(0, 0, 0);
+    background-image: linear-gradient(to bottom right, rgb(41, 131, 161), rgb(4, 74, 77));
+  }
+
   @media (max-width: 1024px) {
     .next-button{
       max-width: 80vw;
     }
 
     .next-button:active{
+      max-width: 80vw;
+    }
+
+    .next-button:focus{
       max-width: 80vw;
     }
   }

@@ -1,7 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Hurricane');
+
 .quiz-finished{
     font-size: calc(20px + 2vmin);
     border-radius: 20px;
     min-width: 200px;
     max-width: auto;
     background-color: rgb(172, 121, 54);
+  }
+
+  .end-image{
+    font-size: calc(20px + 2vmin);
+    border-radius: 20px;
+    border: black;
+    min-width: 200px;
+    max-width: auto;
+    font-family: 'Hurricane';
+    font-size: 20vh;
   }

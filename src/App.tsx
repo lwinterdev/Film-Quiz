@@ -50,21 +50,18 @@ function App() {
 
   const chooseDifficulty = (difficulty:string) => { //function to select the difficulty
     setDifficultySelected(true);
+    setQuestionDifficulty(difficulty);
     startTrivia(difficulty);
   }
 
 
   const handleQuestionAmountChange = (amount:number) => { //function to change the amount of questions
     setQuestionAmount(prev => prev + amount);
-    if (questionAmount > 50){setQuestionAmount(50)};
-    if (questionAmount < 10){setQuestionAmount(10)};
   }
 
 
   const startTrivia = async(difficulty:any) => { //function to start the game
     setLoading(true);
-
-    setQuestionDifficulty(difficulty);
 
     const newQuestions = await fetchQuizQuestions(
       questionAmount, difficulty
@@ -91,7 +88,6 @@ function App() {
   
   const checkAnswer =(e: React.MouseEvent<HTMLButtonElement>) => { //function to check the answer the user has given
     const answer = e.currentTarget.value;
-    console.log(gameOver)
     //check if correct
     const correct = questions[number].correct_answer === answer;
     //add score if correct
@@ -125,26 +121,13 @@ function App() {
                                backgroundSize: 'cover',
                                backgroundRepeat: 'no-repeat',
                                height: '100vh'}}>
+
+                                
                                     
-      <div className='App-header'>                              
+      <div className='App-header'>   
+                               
         <h1 className='p-2'>FILM QUIZ <VscDeviceCameraVideo style={{'marginBottom':'5px'}}/></h1>
         
-
-        { /*TODO
-          <div>
-          
-            <p className='question'>Number of Questions</p>
-            <span>
-              <button className='small-button' onClick={()=>handleQuestionAmountChange(10)}>+</button>
-                <div>{questionAmount}</div>
-              <button className='small-button' onClick={()=>handleQuestionAmountChange(-10)}>-</button>
-            </span>
-
-          </div>
-          */
-        }
-        
-
         {difficultySelected && //show current difficulty only if selected
           <p>Difficulty: {questionDifficulty}</p>
         }
@@ -153,19 +136,37 @@ function App() {
           <p>Score: {score}</p>    
         }
 
-        {loading && 
+        {loading &&  //show spinner if the questions are loading
           <div>Loading Questions... 
             <div className='spinner'>
               <ImSpinner6/>
             </div>
           </div>
         }
+
       </div>
       
       <div className='App'>
+      
+        {!difficultySelected && //show number selection only if difficulty not chosen yet
+          <div>
+          
+            <p className='question'>Number of Questions</p>
 
-        {!difficultySelected &&  //show difficulty selection only if not chosen yet
-          <div className=''>
+            <QuestionAmountButton  
+              questionAmount = {questionAmount} 
+              callbackIncrement ={() =>handleQuestionAmountChange(10)}
+              callbackDecrement ={() =>handleQuestionAmountChange(-10)}
+            />
+
+          </div>
+
+          
+          
+        }
+
+        {!difficultySelected && //show difficulty selection only if not chosen yet
+          <div>
         
             <p className='question p-2'>Select Difficulty</p>
             
@@ -185,8 +186,15 @@ function App() {
             />
           </div>
         }
+
+
+        {/*(!gameOver && difficultySelected ) && !loading && //show the start button if difficulty chosen
+          <button className='m-1 start-button' onClick={() => startTrivia(questionDifficulty)}>
+            Start
+          </button>*/
+        }
       
-        {!loading && !gameOver && userAnswers.length <= questionAmount +1 && difficultySelected &&//show the questions and possible answers only when the game is not over yet
+        {!loading && !gameOver && userAnswers.length <= questionAmount +1 && difficultySelected && //show the questions and possible answers only when the game is not over yet
           <QuestionCard 
             questionNumber={number + 1} 
             questionAmount={questionAmount} 
@@ -212,13 +220,16 @@ function App() {
 
         {(gameOver && userAnswers.length === questionAmount ) && !loading && //show the end screen if last answer was given
         <div>
-          <p className='p-1 quiz-finished'>You got {score} out of {questionAmount} Questions correct!</p>
+          
+          <div className='end-image'>Fin</div>
           {/*<div> 
             TODO: Show the score for each single answer 
           </div>*/}
+          <p className='p-1 quiz-finished'>You got {score} out of {questionAmount} Questions correct!</p>
           <button className='m-1 next-button' onClick={resetGame}>
             Try Again
           </button>
+        
         </div>
         }
 
