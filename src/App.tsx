@@ -139,7 +139,7 @@ function App() {
         {loading &&  //show spinner if the questions are loading
           <div>Loading Questions... 
             <div className='spinner'>
-              <ImSpinner6/>
+              <ImSpinner6 color=''/>
             </div>
           </div>
         }
