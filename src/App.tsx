@@ -120,7 +120,7 @@ function App() {
     setGameOver(true);
   }
 
-  const handleGrainToggle = () => {
+  const handleGrainToggle = () => { //function to toggle the film grain effect
     setGrainToggle(!grainToggle);
   }
 
