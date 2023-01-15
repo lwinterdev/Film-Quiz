@@ -1,6 +1,6 @@
 .small-button{
     border-radius: 20px;
-    background-color: gray;
+    background-image: linear-gradient(to bottom right, rgb(41, 131, 161), rgb(4, 74, 77));
     min-width: auto;
     color : white;
     margin: 4px;
@@ -9,7 +9,7 @@
 
   .small-button:active{
     border-radius: 20px;
-    background-color: rgb(21, 103, 209);
+    background-image: linear-gradient(to bottom right, rgb(111, 213, 247), rgb(7, 72, 75));
     min-width: auto;
     color : white;
     margin: 4px;
@@ -18,38 +18,24 @@
 
   .small-button:disabled{
     border-radius: 20px;
+    background-image: linear-gradient(to bottom right, rgb(131, 129, 129), rgb(77, 77, 77));
     min-width: auto;
     color : gray;
-    background-color: rgb(106, 106, 107);
     margin: 4px;
     min-width: 5vw;
+    
   }
 
  @media (max-width: 720px)  {
   .small-button{
-    border-radius: 20px;
-    background-color: gray;
-    min-width: auto;
-    color : white;
-    margin: 4px;
     min-width: 30vw;
   }
 
   .small-button:active{
-    border-radius: 20px;
-    background-color: rgb(21, 103, 209);
-    min-width: auto;
-    color : white;
-    margin: 4px;
     min-width: 30vw;
   }
 
   .small-button:disabled{
-    border-radius: 20px;
-    min-width: auto;
-    color : gray;
-    background-color: rgb(106, 106, 107);
-    margin: 4px;
     min-width: 30vw;
   }
   
