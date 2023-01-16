@@ -10,9 +10,9 @@ const QuestionAmountButton:React.FC<Props>  = ({questionAmount,callbackIncrement
   return (
        
     <div>
-      <button className='small-button' onClick={callbackIncrement} disabled={(questionAmount === 40) ? true : false}>+</button>
-        <div>{questionAmount}</div>
       <button className='small-button' onClick={callbackDecrement} disabled={(questionAmount === 10) ? true : false}>-</button>
+        <>{questionAmount}</>
+      <button className='small-button' onClick={callbackIncrement} disabled={(questionAmount === 40) ? true : false}>+</button>
     </div>
   
   )

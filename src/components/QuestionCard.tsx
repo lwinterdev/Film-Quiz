@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 type Props = {
   question: string;
@@ -10,6 +11,7 @@ type Props = {
   correctAnswer: string
 
 }
+
 
 const QuestionCard:React.FC<Props> = ({question, answers, callback, userAnswer, questionNumber, questionAmount, correctAnswer}) => {
 
@@ -27,6 +29,7 @@ const QuestionCard:React.FC<Props> = ({question, answers, callback, userAnswer, 
             </button>
           </div>
         ))}
+        
       </div>
 
   	</div>

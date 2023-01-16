@@ -53,9 +53,10 @@ function App() {
 
 
   const chooseDifficulty = (difficulty:string) => { //function to select the difficulty
-    setDifficultySelected(true);
     setQuestionDifficulty(difficulty);
+    setDifficultySelected(true);
     startTrivia(difficulty);
+    
   }
 
 
@@ -83,11 +84,13 @@ function App() {
 
   const resetGame = () => { //function to reset the game after finishing
     setDifficultySelected(false);
+    setQuestionDifficulty('easy');
     setUserAnswers([]);
     setNumber(0);
     setScore(0);
     setGameOver(false);
     setLoading(false);
+    
   
   }
 
@@ -98,6 +101,7 @@ function App() {
     const correct = questions[number].correct_answer === answer;
     //add score if correct
     if (correct) setScore(prev => prev +1);
+    
     //save answer
     const answerObject = {
       question: questions[number].question,
@@ -106,6 +110,7 @@ function App() {
       correctAnswer: questions[number].correct_answer,
     };
     setUserAnswers((prev) => [...prev, answerObject]);
+    console.log(userAnswers[0].answer);
     
   };
 
@@ -132,11 +137,13 @@ function App() {
                                backgroundSize: 'cover',
                                backgroundRepeat: 'no-repeat',
                                height: '100vh'}}>
-      <GrainToggleButton             
+      <div className=''>
+        <GrainToggleButton             
             label="Film Grain"
             toggled={grainToggle}
             onClick={handleGrainToggle} 
-       />     
+        />
+      </div>     
       
       
       <div className='App-header'>   
@@ -164,9 +171,9 @@ function App() {
       <div className='App'>
       
         {!difficultySelected && //show number selection only if difficulty not chosen yet
-          <div>
+          <div >
           
-            <p className='question'>Number of Questions</p>
+            <p className='p-2'>Number of Questions</p>
 
             <QuestionAmountButton  
               questionAmount = {questionAmount} 
@@ -181,7 +188,7 @@ function App() {
         {!difficultySelected && //show difficulty selection only if not chosen yet
           <div>
         
-            <p className='question p-2'>Select Difficulty</p>
+            <p className='p-2'>Select Difficulty</p>
             
             <DifficultyButton
               difficulty = 'Easy'
