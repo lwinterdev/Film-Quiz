@@ -8,6 +8,7 @@ import BackgroundImage from './images/background.jpg';
 import QuestionCard from './components/QuestionCard';
 import {VscDeviceCameraVideo} from 'react-icons/vsc';
 import {ImSpinner6} from 'react-icons/im';
+import {TbGrain} from 'react-icons/tb';
 import DifficultyButton from './components/DifficultyButton';
 import QuestionAmountButton from './components/QuestionAmountButton';
 import GrainToggleButton from './components/GrainToggleButton';
@@ -139,7 +140,7 @@ function App() {
                                height: '100vh'}}>
       <div className=''>
         <GrainToggleButton             
-            label="Film Grain"
+            label={<TbGrain/>}
             toggled={grainToggle}
             onClick={handleGrainToggle} 
         />

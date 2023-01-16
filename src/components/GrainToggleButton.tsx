@@ -1,7 +1,7 @@
 import { useState } from 'react';
-
+import {WiDust} from 'react-icons/wi'
 type Props = {
-    label: string;
+    label: any;
     toggled : boolean;
     onClick: any;
 }

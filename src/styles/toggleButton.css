@@ -40,6 +40,7 @@ input {
   
 input:checked + .graintoggle-span {
     background-color: #abb2f3;
+    
   }
   input:checked + .graintoggle-span:before {
     transform: translateX(29px);

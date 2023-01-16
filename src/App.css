@@ -17,6 +17,7 @@
   justify-content: center;
   font-size: calc(12px + 2vmin);
   color: white;
+  
 
 }
 
@@ -38,6 +39,12 @@ h1{
   top: -110%;
   width: 300%;
   pointer-events:none;
+  
+}
+
+.grayscale-active {
+  filter: gray;
+  -webkit-filter: grayscale(1);
 }
 
 @keyframes grain {
