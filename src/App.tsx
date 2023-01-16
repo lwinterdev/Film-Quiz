@@ -139,7 +139,7 @@ function App() {
                                height: '100vh'}}>
       <div className=''>
         <GrainToggleButton             
-            label={<TbGrain/>}
+            label={<TbGrain size={20}/>}
             toggled={grainToggle}
             onClick={handleGrainToggle} 
         />
