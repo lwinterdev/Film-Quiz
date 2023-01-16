@@ -186,7 +186,7 @@ function App() {
         }
 
         {!difficultySelected && //show difficulty selection only if not chosen yet
-          <div>
+          <>
         
             <p className='p-2'>Select Difficulty</p>
             
@@ -204,7 +204,7 @@ function App() {
               difficulty = 'Hard'
               callback = {() =>chooseDifficulty('hard')}
             />
-          </div>
+          </>
         }
         
 

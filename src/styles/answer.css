@@ -29,7 +29,7 @@
     border-radius: 20px;
     min-width: 50vw;
     max-width: auto;
-    background-image: linear-gradient(to bottom right, rgb(29, 148, 29), rgb(196, 243, 194));
+    background-image: linear-gradient(to bottom right, rgb(12, 94, 12), rgb(94, 241, 89));
   }
   
   .false-answer{
@@ -53,14 +53,17 @@
   @media (max-width: 1024px) {
     .answer{
       min-width: 80vw;
+      font-size: 20px;
     }
   
     .correct-answer{
       min-width: 80vw;
+      font-size: 20px;
     }
   
     .false-answer{
       min-width: 80vw;
+      font-size: 20px;
     }
   
     .answer-container{
@@ -69,10 +72,12 @@
   
     .answer:focus{
       min-width: 80vw;
+      font-size: 20px;
     }
   
     .answer:active{
       min-width: 80vw;
+      font-size: 20px;
     }
   }
   

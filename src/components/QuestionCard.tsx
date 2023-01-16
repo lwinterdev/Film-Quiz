@@ -24,18 +24,16 @@ const QuestionCard:React.FC<Props> = ({question, answers, callback, userAnswer, 
       <div>
         {answers && answers.map(answer => (
           <div className='p-1 answer-container ' key={answer} >
-           
-            <button className={(userAnswer && answer === correctAnswer) ? 'correct-answer' : 'answer'} disabled={userAnswer ? true : false} value={answer} onClick={callback}>
+            <div className={userAnswer && userAnswer.answer ? 'false-answer' : 'correct-answer'}>
+              <button className={(userAnswer && answer === correctAnswer) ? 'correct-answer' : 'answer'} disabled={userAnswer ? true : false} value={answer} onClick={callback}>
                 <span dangerouslySetInnerHTML={{__html: answer}}></span>
-                
-            </button>
-
+              </button>
             </div>
+          </div>
           
         ))}
         
       </div>
-          
   	</div>
 
     

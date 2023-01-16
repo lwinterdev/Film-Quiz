@@ -1,20 +1,37 @@
 .difficulty-button{
   border-radius: 20px;
-  min-width: 200px;
+  min-width: 30vw;
   max-width: auto;
   background-image: linear-gradient(to bottom right, rgb(198, 241, 255), rgb(156, 97, 252));
 }
   
 .difficulty-button:active{
   border-radius: 20px;
-  min-width: 200px;
+  min-width: 30vw;
   max-width: auto;
   background-image: linear-gradient(to bottom right, rgb(11, 180, 236), rgb(110, 26, 245));
 }
 
 .difficulty-button:focus{
   border-radius: 20px;
-  min-width: 200px;
+  min-width: 30vw;
   max-width: auto;
   background-image: linear-gradient(to bottom right, rgb(11, 180, 236), rgb(110, 26, 245));
+}
+
+@media (max-width:720px){
+  .difficulty-button {
+    width: 80vw;
+    height: 5vh;
+  }
+
+  .difficulty-button:active {
+    width: 80vw;
+    height: 5vh;
+  }
+
+  .difficulty-button:focus {
+    width: 80vw;
+    height: 5vh;
+  }
 }

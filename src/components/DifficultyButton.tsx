@@ -9,9 +9,11 @@ type Props = {
 const DifficultyButton:React.FC<Props> = ({difficulty,callback}) => {
  
     return (
-        <button className='difficulty-button' onClick={callback}>
-            <div>{difficulty}</div>
-        </button>
+        <div className='p-1 answer-container'  >
+            <button className='difficulty-button' onClick={callback}>
+                <div>{difficulty}</div>
+            </button>
+        </div>
     )
 }
 

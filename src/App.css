@@ -43,8 +43,8 @@ h1{
 }
 
 .grayscale-active {
-  filter: gray;
-  -webkit-filter: grayscale(1);
+  filter: white;
+  -webkit-filter: sepia(1);
 }
 
 @keyframes grain {
