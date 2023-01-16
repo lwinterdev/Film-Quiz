@@ -111,7 +111,6 @@ function App() {
       correctAnswer: questions[number].correct_answer,
     };
     setUserAnswers((prev) => [...prev, answerObject]);
-    console.log(userAnswers[0].answer);
     
   };
 
