@@ -1,13 +1,13 @@
 .start-button{
-    border-radius: 20px;
-    min-width: auto;
-    color: rgb(0, 0, 0);
-    background-color: rgb(143, 189, 204);
-  }
+  border-radius: 20px;
+  min-width: auto;
+  color: rgb(0, 0, 0);
+  background-color: rgb(143, 189, 204);
+}
   
 .start-button:active{
-    border-radius: 20px;
-    min-width: auto;
-    color: rgb(0, 0, 0);
-    background-color: rgb(41, 131, 161);
-  }
+  border-radius: 20px;
+  min-width: auto;
+  color: rgb(0, 0, 0);
+  background-color: rgb(41, 131, 161);
+}

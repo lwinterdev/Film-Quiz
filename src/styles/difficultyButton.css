@@ -18,20 +18,3 @@
   max-width: auto;
   background-image: linear-gradient(to bottom right, rgb(11, 180, 236), rgb(110, 26, 245));
 }
-
-@media (max-width:720px){
-  .difficulty-button {
-    width: 80vw;
-    height: 5vh;
-  }
-
-  .difficulty-button:active {
-    width: 80vw;
-    height: 5vh;
-  }
-
-  .difficulty-button:focus {
-    width: 80vw;
-    height: 5vh;
-  }
-}

@@ -1,5 +1,4 @@
-import React from 'react';
-import classNames from 'classnames';
+import React from "react";
 
 type Props = {
   question: string;
@@ -8,36 +7,58 @@ type Props = {
   userAnswer: any;
   questionNumber: number;
   questionAmount: number;
-  correctAnswer: string
+  correctAnswer: string;
+};
 
-}
-
-
-const QuestionCard:React.FC<Props> = ({question, answers, callback, userAnswer, questionNumber, questionAmount, correctAnswer}) => {
-
+const QuestionCard: React.FC<Props> = ({
+  question,
+  answers,
+  callback,
+  userAnswer,
+  questionNumber,
+  questionAmount,
+  correctAnswer,
+}) => {
   return (
-
-    <div>
-      <p>Question: {questionNumber} / {questionAmount}</p>
-      <p className='question p-1' dangerouslySetInnerHTML={{__html: question}}></p>
-      
-      <div>
-        {answers && answers.map(answer => (
-          <div className='p-1 answer-container ' key={answer} >
-            <div className={userAnswer && userAnswer.answer ? 'false-answer' : 'correct-answer'}>
-              <button className={(userAnswer && answer === correctAnswer) ? 'correct-answer' : 'answer'} disabled={userAnswer ? true : false} value={answer} onClick={callback}>
-                <span dangerouslySetInnerHTML={{__html: answer}}></span>
-              </button>
-            </div>
-          </div>
-          
-        ))}
-        
+    <div className="App">
+      <div className="p-1">
+        Question: {questionNumber}/{questionAmount}
       </div>
-  	</div>
 
-    
-  )
-}
+      <p
+        className="question p-2"
+        dangerouslySetInnerHTML={{ __html: question }}
+      ></p>
 
-export default QuestionCard
+      <div>
+        {answers &&
+          answers.map((answer) => (
+            <div className={"answer-container"} key={answer}>
+              <div
+                className={
+                  userAnswer && userAnswer.answer === answer
+                    ? "p-1 chosen-answer"
+                    : " p-1 answer-container"
+                }
+              >
+                <button
+                  className={
+                    userAnswer && answer === correctAnswer
+                      ? "correct-answer"
+                      : "answer"
+                  }
+                  disabled={userAnswer ? true : false}
+                  value={answer}
+                  onClick={callback}
+                >
+                  <span dangerouslySetInnerHTML={{ __html: answer }}></span>
+                </button>
+              </div>
+            </div>
+          ))}
+      </div>
+    </div>
+  );
+};
+
+export default QuestionCard;

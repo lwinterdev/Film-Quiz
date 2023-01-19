@@ -1,77 +1,76 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 
 //images
-import BackgroundImage from './images/background.jpg';
+import BackgroundImage from "./images/background.jpg";
 
 //components
-import QuestionCard from './components/QuestionCard';
-import {VscDeviceCameraVideo} from 'react-icons/vsc';
-import {ImSpinner6} from 'react-icons/im';
-import {TbGrain} from 'react-icons/tb';
-import DifficultyButton from './components/DifficultyButton';
-import QuestionAmountButton from './components/QuestionAmountButton';
-import GrainToggleButton from './components/GrainToggleButton';
+import QuestionCard from "./components/QuestionCard";
+import { VscDeviceCameraVideo } from "react-icons/vsc";
+import { ImSpinner6 } from "react-icons/im";
+import { TbGrain } from "react-icons/tb";
+import { FiInfo } from "react-icons/fi";
+import { ImCancelCircle } from 'react-icons/im'
+import DifficultyButton from "./components/DifficultyButton";
+import QuestionAmountButton from "./components/QuestionAmountButton";
+import ToggleButton from "./components/ToggleButton";
+import ModalPopupButton from "./components/ModalPopupButton";
+import InfoPopup from "./components/InfoPopup";
 
 //styles
-import './styles/answer.css';
-import './styles/difficultyButton.css';
-import './styles/spinner.css';
-import './styles/question.css';
-import './styles/startButton.css';
-import './styles/nextButton.css';
-import './styles/restartButton.css';
-import './styles/smallButton.css';
-import './styles/quizFinished.css';
-import './styles/toggleButton.css';
+import "./styles/answer.css";
+import "./styles/difficultyButton.css";
+import "./styles/spinner.css";
+import "./styles/question.css";
+import "./styles/startButton.css";
+import "./styles/nextButton.css";
+import "./styles/restartButton.css";
+import "./styles/smallButton.css";
+import "./styles/quizFinished.css";
+import "./styles/toggleButton.css";
 
 //hooks
-import { useState } from 'react';
-import { fetchQuizQuestions } from './API';
-import { QuestionState } from './API';
+import { useState, useEffect, useRef } from "react";
+import { fetchQuizQuestions } from "./API";
+import { QuestionState } from "./API";
 
 type AnswerObject = {
-  question:string;
-  answer:string;
-  correct:boolean;
-  correctAnswer:string;
-}
-
+  question: string;
+  answer: string;
+  correct: boolean;
+  correctAnswer: string;
+};
 
 function App() {
-  
-  const [questionDifficulty,setQuestionDifficulty] = useState('easy');
-  const [questionAmount,setQuestionAmount] = useState(10);
-  const [difficultySelected,setDifficultySelected] = useState(false);
-  const [loading,setLoading] = useState(false);
-  const [questions,setQuestions] = useState<QuestionState[]>([]);
-  const [number,setNumber] = useState(0);
-  const [userAnswers,setUserAnswers] = useState<AnswerObject[]>([]);
-  const [score,setScore] = useState(0);
-  const [gameOver,setGameOver] = useState(false);
-  const [grainToggle,setGrainToggle] = useState(true);
-  
+  const [questionDifficulty, setQuestionDifficulty] = useState("easy");
+  const [questionAmount, setQuestionAmount] = useState(10);
+  const [difficultySelected, setDifficultySelected] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [questions, setQuestions] = useState<QuestionState[]>([]);
+  const [number, setNumber] = useState(0);
+  const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
+  const [score, setScore] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
+  const [grainToggle, setGrainToggle] = useState(true);
+  const [infoPopupToggle, setInfoPopupToggle] = useState(false);
 
-
-  const chooseDifficulty = (difficulty:string) => { //function to select the difficulty
+  const chooseDifficulty = (difficulty: string) => {
+    //function to select the difficulty
     setQuestionDifficulty(difficulty);
     setDifficultySelected(true);
     startTrivia(difficulty);
-    
-  }
+  };
 
+  const handleQuestionAmountChange = (amount: number) => {
+    //function to change the amount of questions
+    setQuestionAmount((prev) => prev + amount);
+  };
 
-  const handleQuestionAmountChange = (amount:number) => { //function to change the amount of questions
-    setQuestionAmount(prev => prev + amount);
-  }
-
-
-  const startTrivia = async(difficulty:any) => { //function to start the game
+  const startTrivia = async (difficulty: any) => {
+    //function to start the game
     setLoading(true);
 
-    const newQuestions = await fetchQuizQuestions(
-      questionAmount, difficulty
-    );
+    const newQuestions = await fetchQuizQuestions(questionAmount, difficulty);
 
     setQuestions(newQuestions);
     setUserAnswers([]);
@@ -79,30 +78,27 @@ function App() {
     setScore(0);
     setGameOver(false);
     setLoading(false);
- 
   };
 
-
-  const resetGame = () => { //function to reset the game after finishing
+  const resetGame = () => {
+    //function to reset the game after finishing
     setDifficultySelected(false);
-    setQuestionDifficulty('easy');
+    setQuestionDifficulty("easy");
     setUserAnswers([]);
     setNumber(0);
     setScore(0);
     setGameOver(false);
     setLoading(false);
-    
-  
-  }
+  };
 
-  
-  const checkAnswer =(e: React.MouseEvent<HTMLButtonElement>) => { //function to check the answer the user has given
+  const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
+    //function to check the answer the user has given
     const answer = e.currentTarget.value;
     //check if correct
     const correct = questions[number].correct_answer === answer;
     //add score if correct
-    if (correct) setScore(prev => prev +1);
-    
+    if (correct) setScore((prev) => prev + 1);
+
     //save answer
     const answerObject = {
       question: questions[number].question,
@@ -111,149 +107,226 @@ function App() {
       correctAnswer: questions[number].correct_answer,
     };
     setUserAnswers((prev) => [...prev, answerObject]);
-    
   };
 
-
-  const nextQuestion = () =>{ //function to jump to next question
-    const nextQuestion = number +1 ;
+  const nextQuestion = () => {
+    //function to jump to next question
+    const nextQuestion = number + 1;
     setNumber(nextQuestion);
   };
 
-
-  const showEndResult = () => { //function to end the game
+  const showEndResult = () => {
+    //function to end the game
     setGameOver(true);
-  }
+  };
 
-  const handleGrainToggle = () => { //function to toggle the film grain effect
+  const handleGrainToggle = () => {
+    //function to toggle the film grain effect
     setGrainToggle(!grainToggle);
+  };
+
+  const handleInfoPopupToggle = () => {
+    //function to toggle the website info
+    setInfoPopupToggle(!infoPopupToggle);
+  };
+
+  const refOne = useRef(null);
+
+  useEffect(()=>{
+    document.addEventListener('click',handleClickOutside,true);
+  
+    return () => {
+      document.removeEventListener('click',handleClickOutside,false);
+    }
+
+  },
+  
+  [refOne])
+
+  const handleClickOutside=(e:any)=>{
+    //function to react to clicks outside of the referenced element
+    try  {if (!refOne!.current!.contains(e.target)!){
+      setInfoPopupToggle(false); //typescript would throw an error otherwise
+    }}
+    catch {
+
+    }
   }
 
-  
   return (
-    <div className={grainToggle ? 'grain-active': ''}
-         style={{ backgroundImage: `url(${BackgroundImage})`,
-                               backgroundPosition: 'center',
-                               backgroundSize: 'cover',
-                               backgroundRepeat: 'no-repeat',
-                               height: '100vh'}}>
-      <div className=''>
-        <GrainToggleButton             
-            label={<TbGrain size={20}/>}
+    <div
+      className={grainToggle ? "grain-active" : ""}
+      style={{
+        backgroundImage: `url(${BackgroundImage})`,
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        minHeight: "100vh",
+      }}
+    >
+      <span className="">
+        <div className="grain-toggle">
+          <ToggleButton
+            label={<TbGrain size={20} />}
             toggled={grainToggle}
-            onClick={handleGrainToggle} 
-        />
-      </div>     
-      
-      
-      <div className='App-header'>   
-      
-        <h1 className='p-2'>FILM QUIZ <VscDeviceCameraVideo style={{'marginBottom':'5px'}}/></h1>
-        
-        {difficultySelected && //show current difficulty only if selected
-          <p>Difficulty: {questionDifficulty}</p>
-        }
+            onClick={handleGrainToggle}
+          />
+        </div>
 
-        {!gameOver && !loading && difficultySelected && userAnswers.length !== questionAmount +1 && //show current score only if difficulty selected
-          <p>Score: {score}</p>    
-        }
-
-        {loading &&  //show spinner if the questions are loading
-          <div>Loading Questions... 
-            <div className='spinner'>
-              <ImSpinner6 color=''/>
-            </div>
-          </div>
-        }
-
-      </div>
-      
-      <div className='App'>
-      
-        {!difficultySelected && //show number selection only if difficulty not chosen yet
-          <div >
-          
-            <p className='p-2'>Number of Questions</p>
-
-            <QuestionAmountButton  
-              questionAmount = {questionAmount} 
-              callbackIncrement ={() =>handleQuestionAmountChange(10)}
-              callbackDecrement ={() =>handleQuestionAmountChange(-10)}
+        {( //component is displayed at the end of the screen
+          <div className="App-footer">
+            <ModalPopupButton 
+              label={<FiInfo size={40} />}
+              toggled={infoPopupToggle}
+              onClick={handleInfoPopupToggle}
             />
-
           </div>
+        )}
+        
+        {infoPopupToggle && ( 
+          <span className="popup m-1" ref={refOne}>
+            <InfoPopup
+              callback={() => setInfoPopupToggle(false)}
+              closeIcon={<ImCancelCircle />}
+            />
+          </span>
+        )}
 
-        }
+        <span className="App-header">
+          <h1>
+            FILM QUIZ <VscDeviceCameraVideo style={{ marginBottom: "5px" }} />
+          </h1>
+        </span>
+      </span>
 
-        {!difficultySelected && //show difficulty selection only if not chosen yet
+      {
+        <div className="App-header">
+          <div className="App">
+            {difficultySelected && ( //show current difficulty only if selected
+              <>Difficulty: {questionDifficulty} </>
+            )}
+
+            {!gameOver &&
+              !loading &&
+              difficultySelected &&
+              userAnswers.length !== questionAmount + 1 && ( //show current score only if difficulty selected
+                <>Score: {score}</>
+              )}
+
+            {loading && ( //show spinner if the questions are loading
+              <div>
+                Loading Questions...
+                <div className="spinner">
+                  <ImSpinner6 color="" />
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      }
+
+      <div className="App">
+        {!difficultySelected && ( //show number selection only if difficulty not chosen yet
+          <div>
+            <p className="p-2">Number of Questions</p>
+
+            <QuestionAmountButton
+              questionAmount={questionAmount}
+              callbackIncrement={() => handleQuestionAmountChange(10)}
+              callbackDecrement={() => handleQuestionAmountChange(-10)}
+            />
+          </div>
+        )}
+
+        {!difficultySelected && ( //show difficulty selection only if not chosen yet
           <>
-        
-            <p className='p-2'>Select Difficulty</p>
-            
+            <p className="p-2">Select Difficulty</p>
+
             <DifficultyButton
-              difficulty = 'Easy'
-              callback = {() =>chooseDifficulty('easy')}
+              difficulty="Easy"
+              callback={() => chooseDifficulty("easy")}
             />
 
             <DifficultyButton
-              difficulty = 'Medium'
-              callback = {() =>chooseDifficulty('medium')}
+              difficulty="Medium"
+              callback={() => chooseDifficulty("medium")}
             />
 
             <DifficultyButton
-              difficulty = 'Hard'
-              callback = {() =>chooseDifficulty('hard')}
+              difficulty="Hard"
+              callback={() => chooseDifficulty("hard")}
             />
           </>
-        }
-        
+        )}
 
-        {/*(!gameOver && difficultySelected ) && !loading && //show the start button if difficulty chosen
-          <button className='m-1 start-button' onClick={() => startTrivia(questionDifficulty)}>
+        {/*(!gameOver && difficultySelected ) && !loading && //show the start button if difficulty chosen (would break the app somehow right now if displayed :shrug:)
+          <button className='m-1 start-button' onClick={() => startTrivia(questionDifficulty)}> 
             Start
-          </button>*/
-        }
-      
-        {!loading && !gameOver && userAnswers.length <= questionAmount +1 && difficultySelected && //show the questions and possible answers only when the game is not over yet
-          <QuestionCard 
-            questionNumber={number + 1} 
-            questionAmount={questionAmount} 
-            question={questions[number].question} 
-            answers={questions[number].answers}
-            userAnswer={userAnswers && userAnswers[number]}
-            correctAnswer={questions[number].correct_answer}
-            callback={checkAnswer}
-          />
-        }
+          </button>*/}
 
-        {!gameOver && !loading && userAnswers.length === number + 1 && number !== questionAmount -1&& //show next button only if the game is currently active or last question has not yet been reached
-          <button className='m-1 next-button' onClick={nextQuestion}>
-            Next
-          </button>
-        }
+        {!loading &&
+          !gameOver &&
+          userAnswers.length <= questionAmount + 1 &&
+          difficultySelected && ( //show the questions and possible answers only when the game is not over yet
+            <div>
+              <QuestionCard
+                questionNumber={number + 1}
+                questionAmount={questionAmount}
+                question={questions[number].question}
+                answers={questions[number].answers}
+                userAnswer={userAnswers && userAnswers[number]}
+                correctAnswer={questions[number].correct_answer}
+                callback={checkAnswer}
+              />
+            </div>
+          )}
 
-        {(!gameOver && userAnswers.length === questionAmount ) && !loading && //show the finish button if last question was reached
-          <button className='m-1 next-button' onClick={showEndResult}>
-            Finish
-          </button>
-        }
+        {!gameOver &&
+          difficultySelected &&
+          !loading &&
+          userAnswers.length !== questionAmount && ( //show next button only if the game is currently active or last question has not yet been reached
+            <div>
+              <button
+                className="m-1 next-button"
+                onClick={nextQuestion}
+                disabled={
+                  !gameOver &&
+                  !loading &&
+                  userAnswers.length === number + 1 &&
+                  number !== questionAmount - 1
+                    ? false
+                    : true
+                }
+              >
+                Next
+              </button>
+            </div>
+          )}
 
-        {(gameOver && userAnswers.length === questionAmount ) && !loading && //show the end screen if last answer was given
-        <div>
-          
-          <div className={'end-image'}>Fin</div>
-          
-          <p className='p-1 quiz-finished'>You got {score} out of {questionAmount} Questions correct!</p>
-          <button className='m-1 next-button' onClick={resetGame}>
-            Try Again
-          </button>
-        
-        </div>
-        }
+        {!gameOver &&
+          userAnswers.length === questionAmount &&
+          !loading && ( //show the finish button if last question was reached
+            <button className="m-1 next-button" onClick={showEndResult}>
+              Finish
+            </button>
+          )}
 
+        {gameOver &&
+          userAnswers.length === questionAmount &&
+          !loading && ( //show the end screen if last answer was given
+            <div>
+              <div className={"end-image"}>Fin</div>
+              <p className="p-1 quiz-finished">
+                You got {score} out of {questionAmount} Questions correct!
+              </p>
+              <div className="end-card">
+                <button className="m-1 next-button" onClick={resetGame}>
+                  Try Again
+                </button>
+              </div>
+            </div>
+          )}
       </div>
-
-      
     </div>
   );
 }
