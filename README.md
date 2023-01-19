@@ -1,2 +1,2 @@
 Film Quiz Web App made with React + Typescript
-https://lwinterdev.github.io/Film-Quiz/
+[View the App here](https://lwinterdev.github.io/Film-Quiz/)

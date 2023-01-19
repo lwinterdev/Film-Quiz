@@ -132,7 +132,7 @@ function App() {
 
   const refOne = useRef(null);
 
-  useEffect(()=>{
+  useEffect(()=>{ 
     document.addEventListener('click',handleClickOutside,true);
   
     return () => {
@@ -182,7 +182,7 @@ function App() {
             />
           </div>
         )}
-        
+
         {infoPopupToggle && ( 
           <span className="popup m-1" ref={refOne}>
             <InfoPopup
