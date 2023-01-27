@@ -10,7 +10,7 @@ import { VscDeviceCameraVideo } from "react-icons/vsc";
 import { ImSpinner6 } from "react-icons/im";
 import { TbGrain } from "react-icons/tb";
 import { FiInfo } from "react-icons/fi";
-import { ImCancelCircle } from 'react-icons/im'
+import { ImCancelCircle } from "react-icons/im";
 import DifficultyButton from "./components/DifficultyButton";
 import QuestionAmountButton from "./components/QuestionAmountButton";
 import ToggleButton from "./components/ToggleButton";
@@ -132,26 +132,22 @@ function App() {
 
   const refOne = useRef(null);
 
-  useEffect(()=>{ 
-    document.addEventListener('click',handleClickOutside,true);
-  
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside, true);
+
     return () => {
-      document.removeEventListener('click',handleClickOutside,false);
-    }
+      document.removeEventListener("click", handleClickOutside, false);
+    };
+  }, [refOne]);
 
-  },
-  
-  [refOne])
-
-  const handleClickOutside=(e:any)=>{
+  const handleClickOutside = (e: any) => {
     //function to react to clicks outside of the referenced element
-    try  {if (!refOne!.current!.contains(e.target)!){
-      setInfoPopupToggle(false); //typescript would throw an error otherwise
-    }}
-    catch {
-
-    }
-  }
+    try {
+      if (!refOne!.current!.contains(e.target)!) {
+        setInfoPopupToggle(false); //typescript would throw an error otherwise
+      }
+    } catch {}
+  };
 
   return (
     <div
@@ -173,25 +169,6 @@ function App() {
           />
         </div>
 
-        {( //component is displayed at the end of the screen
-          <div className="App-footer">
-            <ModalPopupButton 
-              label={<FiInfo size={40} />}
-              toggled={infoPopupToggle}
-              onClick={handleInfoPopupToggle}
-            />
-          </div>
-        )}
-
-        {infoPopupToggle && ( 
-          <span className="popup m-1" ref={refOne}>
-            <InfoPopup
-              callback={() => setInfoPopupToggle(false)}
-              closeIcon={<ImCancelCircle />}
-            />
-          </span>
-        )}
-
         <span className="App-header">
           <h1>
             FILM QUIZ <VscDeviceCameraVideo style={{ marginBottom: "5px" }} />
@@ -203,14 +180,16 @@ function App() {
         <div className="App-header">
           <div className="App">
             {difficultySelected && ( //show current difficulty only if selected
-              <>Difficulty: {questionDifficulty} </>
+              <div className="panel p-1 m-1">
+                Difficulty: {questionDifficulty}{" "}
+              </div>
             )}
 
             {!gameOver &&
               !loading &&
               difficultySelected &&
               userAnswers.length !== questionAmount + 1 && ( //show current score only if difficulty selected
-                <>Score: {score}</>
+                <div className="panel p-1 m-1">Score: {score}</div>
               )}
 
             {loading && ( //show spinner if the questions are loading
@@ -315,7 +294,7 @@ function App() {
           userAnswers.length === questionAmount &&
           !loading && ( //show the end screen if last answer was given
             <div>
-              <div className={"end-image"}>Fin</div>
+              <div className="end-image">Fin</div>
               <p className="p-1 quiz-finished">
                 You got {score} out of {questionAmount} Questions correct!
               </p>
@@ -327,6 +306,25 @@ function App() {
             </div>
           )}
       </div>
+
+      {
+        <div className="App-footer">
+          <ModalPopupButton
+            label={<FiInfo size={30} />}
+            toggled={infoPopupToggle}
+            onClick={handleInfoPopupToggle}
+          />
+        </div>
+      }
+
+      {infoPopupToggle && (
+        <span className="popup m-1" ref={refOne}>
+          <InfoPopup
+            callback={() => setInfoPopupToggle(false)}
+            closeIcon={<ImCancelCircle />}
+          />
+        </span>
+      )}
     </div>
   );
 }

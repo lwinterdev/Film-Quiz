@@ -10,7 +10,7 @@ const InfoPopup: React.FC<Props> = ({ callback, closeIcon }) => {
     <div className="popup p-4">
       <p>
         This Project was made using React, Typescript, Bootstrap
-        <button className="cancel-button" onClick={callback}>
+        <button className="cancel-button m-1" onClick={callback}>
           {closeIcon}
         </button>
       </p>

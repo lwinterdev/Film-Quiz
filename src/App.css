@@ -19,24 +19,11 @@
   color: white;
 }
 
-.App-content{
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(12px + 2vmin);
-  color: white;
-}
-
 
 .App-footer {
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  margin-top: 0%;
-  margin-left: -70px;
+  position: fixed;
+  bottom: 1%;
+  right: 99%;
 }
 
 
@@ -82,12 +69,12 @@ h1{
 .popup{
   display: flex;
   text-align: center;
-  flex-direction: row;
-  margin-top: 70vh;
-  margin-left: 10vw;
+  align-items: center;
   background-color: black;
   border-radius: 20px;
-  position: absolute;
+  position: fixed;
+  bottom: 1%;
+  left: 10%;
   min-width: 80vw;
   color: white;
  }
@@ -110,12 +97,10 @@ h1{
   color: silver;
 }
 
-
-
-
-
-
-
-
+.panel{
+  color: white;
+  background-color: black;
+  border-radius: 20px;
+}
 
 

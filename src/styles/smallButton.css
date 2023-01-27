@@ -19,10 +19,10 @@
 .small-button:disabled {
   border-radius: 20px;
   background-image: linear-gradient(to bottom right, rgb(165, 162, 162), rgb(138, 138, 138));
-  min-width: auto;
+  width: auto;
   color: gray;
   margin: 4px;
-  min-width: 5vw;
+  width: 5vw;
 
 }
 

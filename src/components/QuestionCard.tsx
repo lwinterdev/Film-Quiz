@@ -21,7 +21,7 @@ const QuestionCard: React.FC<Props> = ({
 }) => {
   return (
     <div className="App">
-      <div className="p-1">
+      <div className="panel p-1">
         Question: {questionNumber}/{questionAmount}
       </div>
 

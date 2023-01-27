@@ -3,37 +3,31 @@
  .chosen-answer{
   border-radius: 20px;
   background-image: linear-gradient(to bottom right, rgb(8, 113, 161), rgb(29, 102, 175));
-  max-width: 80vw;
  }
   
 .answer-container{
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 80vw;
 }
 
 /*---inner answer button ---*/
 
 .answer{
   border-radius: 20px;
-  min-width: 50vw;
-  max-width: 80vw;
-  background-color: rgb(198, 241, 255);
+  width: 60vw;
   background-image: linear-gradient(to bottom right, rgb(198, 241, 255), rgb(167, 124, 241));
 }
 
 .answer:focus{
   border-radius: 20px;
-  min-width: 50vw;
-  max-width: 80vw;
+  width: 60vw;
   background-image: linear-gradient(to bottom right, rgb(11, 180, 236), rgb(173, 125, 250));
 }
 
 .correct-answer{
   border-radius: 20px;
-  min-width: 50vw;
-  max-width: 80vw;
+  width: 60vw;
   background-image: linear-gradient(to bottom right, rgb(12, 94, 12), rgb(94, 241, 89));
   }
   
