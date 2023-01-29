@@ -34,6 +34,7 @@ import "./styles/toggleButton.css";
 import { useState, useEffect, useRef } from "react";
 import { fetchQuizQuestions } from "./API";
 import { QuestionState } from "./API";
+import { useLocalStorage } from "usehooks-ts";
 
 type AnswerObject = {
   question: string;
@@ -52,12 +53,10 @@ function App() {
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
-  
-  const [grainToggle, setGrainToggle] = useState(true);
-  
   const [infoPopupToggle, setInfoPopupToggle] = useState(false);
-
-
+  
+  const [grainToggle, setGrainToggle] = useLocalStorage('grainToggle',true); //get the value from local storage
+  
   const chooseDifficulty = (difficulty: string) => {
     //function to select the difficulty
     setQuestionDifficulty(difficulty);
@@ -124,24 +123,10 @@ function App() {
     setGameOver(true);
   };
 
-
   const handleGrainToggle = () => {
     //function to toggle the film grain effect
     setGrainToggle(!grainToggle);
   };
-
-  // TODO
-  /*useEffect(() => {
-    //set the grainToggle value to local storage
-    JSON.parse(localStorage.getItem('grainToggle'));
-    if ('grainToggle') setGrainToggle(grainToggle);
-  }, []);
-
-  useEffect(() => {
-    //get the grainToggle value from local storage
-    localStorage.setItem('grainToggle',JSON.stringify(grainToggle));
-  }, [grainToggle]);
-  */
 
   const handleInfoPopupToggle = () => {
     //function to toggle the website info
