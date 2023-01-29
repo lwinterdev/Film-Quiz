@@ -29,8 +29,7 @@
 
 h1{
   border-radius: 20px;
-  min-width: auto;
-  max-width: auto;
+  width: auto;
   background-color: black;
 }
 

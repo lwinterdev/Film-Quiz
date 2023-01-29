@@ -52,8 +52,11 @@ function App() {
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
-  const [grainToggle, setGrainToggle] = useState(true);
+  
+  const [grainToggle, setGrainToggle] = useState(JSON.parse(localStorage.getItem('grainToggle'))||true);
+  
   const [infoPopupToggle, setInfoPopupToggle] = useState(false);
+
 
   const chooseDifficulty = (difficulty: string) => {
     //function to select the difficulty
@@ -121,15 +124,32 @@ function App() {
     setGameOver(true);
   };
 
+
   const handleGrainToggle = () => {
     //function to toggle the film grain effect
     setGrainToggle(!grainToggle);
   };
 
+  // TODO
+  
+
+  useEffect(() => {
+    //get the grainToggle value from local storage
+    localStorage.setItem('grainToggle',JSON.stringify(grainToggle));
+  }, [grainToggle]);
+
+  useEffect(() => {
+    //set the grainToggle value to local storage
+    JSON.parse(localStorage.getItem('grainToggle'));
+    if (grainToggle) setGrainToggle(grainToggle);
+  }, []);
+
+
   const handleInfoPopupToggle = () => {
     //function to toggle the website info
     setInfoPopupToggle(!infoPopupToggle);
   };
+
 
   const refOne = useRef(null);
 
@@ -172,40 +192,38 @@ function App() {
         </div>
 
         <span className="App-header">
-          <h1>
+          <h1 className="p-2">
             FILM QUIZ <VscDeviceCameraVideo style={{ marginBottom: "5px" }} />
           </h1>
         </span>
       </span>
 
-      {
-        <div className="App-header">
-          <div className="App">
-            {difficultySelected && ( //show current difficulty only if selected
-              <div className="panel p-1 m-1">
-                Difficulty: {questionDifficulty}{" "}
-              </div>
-            )}
+      <div className="App-header">
+        <div className="App">
+          {difficultySelected && ( //show current difficulty only if selected
+            <div className="panel p-1 m-1">
+              Difficulty: {questionDifficulty}{" "}
+            </div>
+          )}
 
-            {!gameOver &&
-              !loading &&
-              difficultySelected &&
-              userAnswers.length !== questionAmount + 1 && ( //show current score only if difficulty selected
-                <div className="panel p-1 m-1">Score: {score}</div>
-              )}
+          {!gameOver &&
+            !loading &&
+            difficultySelected &&
+            userAnswers.length !== questionAmount + 1 && ( //show current score only if difficulty selected
+              <div className="panel p-1 m-1">Score: {score}</div>
+          )}
 
-            {loading && ( //show spinner if the questions are loading
-              <div>
-                Loading Questions...
-                <div className="spinner">
-                  <ImSpinner6 color="" />
-                </div>
+          {loading && ( //show spinner if the questions are loading
+            <div>
+              Loading Questions...
+              <div className="spinner">
+                <ImSpinner6 color="" />
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
-      }
-
+      </div>
+      
       <div className="App">
         {!difficultySelected && ( //show number selection only if difficulty not chosen yet
           <div>
@@ -307,26 +325,24 @@ function App() {
               </div>
             </div>
           )}
+
       </div>
 
-      {
-        <div className="App-footer">
-          <ModalPopupButton
-            label={<FiInfo size={30} />}
-            toggled={infoPopupToggle}
-            onClick={handleInfoPopupToggle}
-          />
-        </div>
-      }
-
-      {infoPopupToggle && (
+      <div className="App-footer">
+        <ModalPopupButton
+          label={<FiInfo size={30} />}
+          toggled={infoPopupToggle}
+          onClick={handleInfoPopupToggle}
+        />
+      </div>
+      
+      {infoPopupToggle && ( //show the info popup only when toggled
         <span className="popup m-1" ref={refOne}>
           <InfoPopup
             callback={() => setInfoPopupToggle(false)}
             closeIcon={<ImCancelCircle />}
             codeIcon={<VscGithub/>}
           />
-          
         </span>
       )}
       

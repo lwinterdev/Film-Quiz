@@ -4,7 +4,7 @@
   min-width: auto;
   color: white;
   margin: 4px;
-  min-width: 5vw;
+  min-width: 8vw;
 }
 
 .small-button:active {
@@ -13,7 +13,7 @@
   min-width: auto;
   color: white;
   margin: 4px;
-  min-width: 5vw;
+  min-width: 8vw;
 }
 
 .small-button:disabled {
@@ -22,21 +22,6 @@
   width: auto;
   color: gray;
   margin: 4px;
-  width: 5vw;
-
+  min-width: 8vw;
 }
 
-@media (max-width: 720px) {
-  .small-button {
-    min-width: 30vw;
-  }
-
-  .small-button:active {
-    min-width: 30vw;
-  }
-
-  .small-button:disabled {
-    min-width: 30vw;
-  }
-
-}
