@@ -53,7 +53,7 @@ function App() {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   
-  const [grainToggle, setGrainToggle] = useState(JSON.parse(localStorage.getItem('grainToggle'))||true);
+  const [grainToggle, setGrainToggle] = useState(true);
   
   const [infoPopupToggle, setInfoPopupToggle] = useState(false);
 
@@ -131,19 +131,17 @@ function App() {
   };
 
   // TODO
-  
+  /*useEffect(() => {
+    //set the grainToggle value to local storage
+    JSON.parse(localStorage.getItem('grainToggle'));
+    if ('grainToggle') setGrainToggle(grainToggle);
+  }, []);
 
   useEffect(() => {
     //get the grainToggle value from local storage
     localStorage.setItem('grainToggle',JSON.stringify(grainToggle));
   }, [grainToggle]);
-
-  useEffect(() => {
-    //set the grainToggle value to local storage
-    JSON.parse(localStorage.getItem('grainToggle'));
-    if (grainToggle) setGrainToggle(grainToggle);
-  }, []);
-
+  */
 
   const handleInfoPopupToggle = () => {
     //function to toggle the website info
