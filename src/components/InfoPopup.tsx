@@ -7,13 +7,14 @@ type Props = {
 
 const InfoPopup: React.FC<Props> = ({ callback, closeIcon }) => {
   return (
-    <div className="popup p-4">
+    <div className="popup">
       <p>
-        This Project was made using React, Typescript, Bootstrap
-        <button className="cancel-button m-1" onClick={callback}>
-          {closeIcon}
-        </button>
+        This Project was made using React, Typescript, Bootstrap and Open Trivia
+        DB API
       </p>
+      <button className="cancel-button m-1" onClick={callback}>
+        {closeIcon}
+      </button>
     </div>
   );
 };
