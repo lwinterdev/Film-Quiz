@@ -34,6 +34,14 @@ h1{
   background-color: black;
 }
 
+a{
+  border-radius: 20px;
+  min-width: auto;
+  max-width: auto;
+  background-color: black;
+  color : red;
+}
+
 
 .grain-active:before {
   animation: grain 5s steps(10) infinite;
@@ -75,23 +83,25 @@ h1{
   border-radius: 20px;
   position: fixed;
   bottom: 1%;
-  left: 10%;
-  width: 80%;
+  left: 0%;
+  width: 100%;
   color: white;
  }
 
 .cancel-button{
+  position: relative;
   color: white;
   background-color: black;
-  right: 100%;
-  bottom: 100%;
+  right: 0%;
+  bottom: 5%;
 }
 
 .cancel-button:hover{
+  position: relative;
   color: silver;
   background-color: black;
-  right: 100%;
-  bottom: 100%;
+  right: 0%;;
+  bottom: 5%;
 }
 
 
