@@ -11,6 +11,7 @@ import { ImSpinner6 } from "react-icons/im";
 import { TbGrain } from "react-icons/tb";
 import { FiInfo } from "react-icons/fi";
 import { ImCancelCircle } from "react-icons/im";
+import { VscGithub } from "react-icons/vsc";
 import DifficultyButton from "./components/DifficultyButton";
 import QuestionAmountButton from "./components/QuestionAmountButton";
 import ToggleButton from "./components/ToggleButton";
@@ -151,6 +152,7 @@ function App() {
 
   return (
     <div
+    
       className={grainToggle ? "grain-active" : ""}
       style={{
         backgroundImage: `url(${BackgroundImage})`,
@@ -322,10 +324,14 @@ function App() {
           <InfoPopup
             callback={() => setInfoPopupToggle(false)}
             closeIcon={<ImCancelCircle />}
+            codeIcon={<VscGithub/>}
           />
+          
         </span>
       )}
+      
     </div>
+    
   );
 }
 
