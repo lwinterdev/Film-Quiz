@@ -12,6 +12,8 @@
   border-radius: 20px;
   width: auto;
   background-color: rgb(172, 121, 54);
+  border-style: solid;
+  border-color: silver;
 }
 
 .end-image {

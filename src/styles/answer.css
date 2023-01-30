@@ -2,34 +2,57 @@
 
  .chosen-answer{
   border-radius: 20px;
-  background-image: linear-gradient(to bottom right, rgb(8, 113, 161), rgb(29, 102, 175));
+  background-image: linear-gradient(to bottom right, rgb(9, 103, 243), rgb(10, 177, 243));
+  color: white;
  }
   
 .answer-container{
   display: flex;
   align-items: center;
   justify-content: center;
+  color: white;
+   
 }
 
 /*---inner answer button ---*/
 
 .answer{
+  color: white;
   border-radius: 20px;
   width: 60vw;
-  background-image: linear-gradient(to bottom right, rgb(198, 241, 255), rgb(167, 124, 241));
+  background-image: linear-gradient(to bottom right, rgb(25, 118, 155), rgb(18, 59, 92));
+  border-style: solid;
+  border-radius: 20px;
+  border-color: silver;
 }
 
 .answer:focus{
   border-radius: 20px;
   width: 60vw;
   background-image: linear-gradient(to bottom right, rgb(11, 180, 236), rgb(173, 125, 250));
+  color: white;
+  border-style: solid;
+  border-color: silver;
 }
+
+.answer:disabled{
+  border-radius: 20px;
+  width: 60vw;
+  background-image: linear-gradient(to bottom right, rgb(121, 202, 230),rgb(191, 160, 240));
+  color: gray;
+  border-style: solid;
+  border-color: silver;
+}
+
 
 .correct-answer{
   border-radius: 20px;
   width: 60vw;
   background-image: linear-gradient(to bottom right, rgb(12, 94, 12), rgb(94, 241, 89));
-  }
+  color: white;
+  border-style: solid;
+  border-color: silver;
+}
   
 
   

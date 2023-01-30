@@ -8,6 +8,9 @@ type Props = {
   questionNumber: number;
   questionAmount: number;
   correctAnswer: string;
+  questionTime: any;
+  difficulty:any;
+  score:any
 };
 
 const QuestionCard: React.FC<Props> = ({
@@ -18,15 +21,19 @@ const QuestionCard: React.FC<Props> = ({
   questionNumber,
   questionAmount,
   correctAnswer,
+  questionTime,
+  score,
+  difficulty,
 }) => {
   return (
     <div className="App">
-      <div className="panel p-1">
-        Question: {questionNumber}/{questionAmount}
-      </div>
 
+      <div className="panel p-3">
+        <span className="p-3">Difficulty: {difficulty} || Question: {questionNumber}/{questionAmount} || Score: {score}</span>
+      </div>
+      
       <p
-        className="question p-2"
+        className="question p-3"
         dangerouslySetInnerHTML={{ __html: question }}
       ></p>
 
@@ -36,18 +43,18 @@ const QuestionCard: React.FC<Props> = ({
             <div className={"answer-container"} key={answer}>
               <div
                 className={
-                  userAnswer && userAnswer.answer === answer
+                  userAnswer && userAnswer.answer === answer //show different style if user has chosen
                     ? "p-1 chosen-answer"
                     : " p-1 answer-container"
                 }
               >
                 <button
                   className={
-                    userAnswer && answer === correctAnswer
+                    userAnswer && answer === correctAnswer //show the correct answer after user has chosen
                       ? "correct-answer"
                       : "answer"
                   }
-                  disabled={userAnswer ? true : false}
+                  disabled={userAnswer ? true : false} //disable after user has chosen answer
                   value={answer}
                   onClick={callback}
                 >

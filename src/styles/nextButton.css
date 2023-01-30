@@ -5,6 +5,9 @@
   border-radius: 20px;
   min-width: 20vw;
   background-image: linear-gradient(to bottom right, rgb(41, 131, 161), rgb(4, 74, 77));
+  border-style: solid;
+  border-color: silver;
+  color: white;
 }
 
 .next-button:disabled{
@@ -14,6 +17,22 @@
   border-radius: 20px;
   min-width: 20vw;
   opacity: 0;
+  background-image: linear-gradient(to bottom right, rgb(123, 212, 247),rgb(92, 171, 235));
+  border-style: solid;
+  border-color: silver;
+}
+
+.next-button:active{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  min-width: 20vw;
+  background-image: linear-gradient(to bottom right, rgb(123, 212, 247),rgb(92, 171, 235));
+  border-style: solid;
+  border-color: silver;
 }
   
+
+
 

@@ -5,6 +5,8 @@
   color: white;
   margin: 4px;
   min-width: 8vw;
+  border-style: solid;
+  border-color: silver;
 }
 
 .small-button:active {
@@ -14,6 +16,8 @@
   color: white;
   margin: 4px;
   min-width: 8vw;
+  border-style: solid;
+  border-color: silver;
 }
 
 .small-button:disabled {
@@ -23,5 +27,7 @@
   color: gray;
   margin: 4px;
   min-width: 8vw;
+  border-style: solid;
+  border-color: silver;
 }
 

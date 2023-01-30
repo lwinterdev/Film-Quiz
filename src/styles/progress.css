@@ -1,0 +1,13 @@
+.progress-container{
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    left: 10%;
+    max-width: 80%;
+}
+
+.progress{
+    background-color: rgb(55, 243, 243);
+    color: white;
+    height: 10%;
+}
