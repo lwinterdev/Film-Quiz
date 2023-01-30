@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Film-Quiz/static/css/main.87caaf68.css",
-    "main.js": "/Film-Quiz/static/js/main.cc4120b0.js",
+    "main.css": "/Film-Quiz/static/css/main.acd98d26.css",
+    "main.js": "/Film-Quiz/static/js/main.3107831c.js",
     "static/js/787.9c4f8028.chunk.js": "/Film-Quiz/static/js/787.9c4f8028.chunk.js",
     "static/media/background.jpg": "/Film-Quiz/static/media/background.d99cfd8628b1958ac589.jpg",
     "index.html": "/Film-Quiz/index.html",
-    "main.87caaf68.css.map": "/Film-Quiz/static/css/main.87caaf68.css.map",
-    "main.cc4120b0.js.map": "/Film-Quiz/static/js/main.cc4120b0.js.map",
+    "main.acd98d26.css.map": "/Film-Quiz/static/css/main.acd98d26.css.map",
+    "main.3107831c.js.map": "/Film-Quiz/static/js/main.3107831c.js.map",
     "787.9c4f8028.chunk.js.map": "/Film-Quiz/static/js/787.9c4f8028.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.87caaf68.css",
-    "static/js/main.cc4120b0.js"
+    "static/css/main.acd98d26.css",
+    "static/js/main.3107831c.js"
   ]
 }
