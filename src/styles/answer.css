@@ -1,3 +1,5 @@
+
+ 
  /*---outer answer button ---*/
 
  .chosen-answer{
@@ -7,52 +9,34 @@
  }
   
 .answer-container{
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: white;
-   
 }
 
 /*---inner answer button ---*/
 
-.answer{
+.answer, .answer:focus, .answer:disabled, .correct-answer{
   color: white;
   border-radius: 20px;
   width: 60vw;
   background-image: linear-gradient(to bottom right, rgb(25, 118, 155), rgb(18, 59, 92));
-  border-style: solid;
   border-radius: 20px;
-  border-color: silver;
 }
 
 .answer:focus{
-  border-radius: 20px;
-  width: 60vw;
   background-image: linear-gradient(to bottom right, rgb(11, 180, 236), rgb(173, 125, 250));
-  color: white;
-  border-style: solid;
-  border-color: silver;
 }
 
 .answer:disabled{
-  border-radius: 20px;
-  width: 60vw;
   background-image: linear-gradient(to bottom right, rgb(121, 202, 230),rgb(191, 160, 240));
-  color: gray;
-  border-style: solid;
-  border-color: silver;
 }
-
 
 .correct-answer{
-  border-radius: 20px;
-  width: 60vw;
   background-image: linear-gradient(to bottom right, rgb(12, 94, 12), rgb(94, 241, 89));
-  color: white;
-  border-style: solid;
-  border-color: silver;
 }
   
-
+@media (max-width: 1000px) {
+  .answer, .answer:focus, .answer:disabled, .correct-answer{
+    width: 90vw;
+  }
+}
   

@@ -1,24 +1,14 @@
-.difficulty-button{
+.difficulty-button, .difficulty-button:active, .difficulty-button:focus{
   color: white;
   border-radius: 20px;
   width: 40vw;
   background-image: linear-gradient(to bottom right, rgb(25, 118, 155), rgb(18, 59, 92));
-  border-style: solid;
-  border-color: silver;
 }
   
 .difficulty-button:active{
-  border-radius: 20px;
-  width: 40vw;
   background-image: linear-gradient(to bottom right, rgb(123, 212, 247),rgb(92, 171, 235));
-  border-style: solid;
-  border-color: silver;
 }
 
 .difficulty-button:focus{
-  border-radius: 20px;
-  width: 40vw;
   background-image: linear-gradient(to bottom right, rgb(129, 213, 247), rgb(43, 130, 201));
-  border-style: solid;
-  border-color: silver;
 }

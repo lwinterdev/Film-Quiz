@@ -1,33 +1,18 @@
-.small-button {
+.small-button, .small-button:active, .small-button:disabled {
   border-radius: 20px;
   background-image: linear-gradient(to bottom right, rgb(41, 131, 161), rgb(4, 74, 77));
   min-width: auto;
   color: white;
   margin: 4px;
   min-width: 8vw;
-  border-style: solid;
-  border-color: silver;
 }
 
 .small-button:active {
-  border-radius: 20px;
   background-image: linear-gradient(to bottom right, rgb(111, 213, 247), rgb(7, 72, 75));
-  min-width: auto;
-  color: white;
-  margin: 4px;
-  min-width: 8vw;
-  border-style: solid;
-  border-color: silver;
 }
 
 .small-button:disabled {
-  border-radius: 20px;
   background-image: linear-gradient(to bottom right, rgb(165, 162, 162), rgb(138, 138, 138));
-  width: auto;
   color: gray;
-  margin: 4px;
-  min-width: 8vw;
-  border-style: solid;
-  border-color: silver;
 }
 

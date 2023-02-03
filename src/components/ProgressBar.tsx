@@ -7,7 +7,7 @@ type Props = {
 const ProgressBar :React.FC<Props> = ({value}) => {
   return (
     <div className='progress-container'>
-        <div className='progress' style={{width:value}}>{value}</div>    
+        <div className='progress' style={{width:100}}>{value}</div>    
     </div>
   )
 }

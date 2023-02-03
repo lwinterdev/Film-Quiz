@@ -1,3 +1,13 @@
+.question-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  padding: 1px;
+}
+
 .question{
   border-style: solid;
   border-radius: 20px;
@@ -7,7 +17,7 @@
             0 0 0.8rem #989799,
             0 0 2.8rem #706e70,
             inset 0 0 1.3rem #504f50; 
-  min-width: 80vw;
+  min-width: 60vw;
   justify-content: center;
   align-items: center;
   color: white;
@@ -23,11 +33,11 @@
       0 0 4px #fff,
       0 0 11px #fff,
       0 0 19px #fff,
-      0 0 40px #bc13fe,
-      0 0 80px #bc13fe,
-      0 0 90px #bc13fe,
-      0 0 100px #bc13fe,
-      0 0 150px #bc13fe;
+      0 0 40px rgb(152, 151, 153),
+      0 0 80px #918f92,
+      0 0 90px #a8a7a8,
+      0 0 100px #9f9da0,
+      0 0 150px #908e91;
   
   }
   
@@ -37,10 +47,11 @@
     0 0 2px #fff,
     0 0 4px #fff,
     0 0 6px #fff,
-    0 0 10px #bc13fe,
-    0 0 45px #bc13fe,
-    0 0 55px #bc13fe,
-    0 0 70px #bc13fe,
-    0 0 80px #bc13fe;
+    0 0 10px #b5b4b6,
+    0 0 45px #9f9da0,
+    0 0 55px #a6a5a7,
+    0 0 70px #adacad,
+    0 0 80px #adadad;
 
 }}
+

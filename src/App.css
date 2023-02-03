@@ -4,10 +4,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(12px + 2vmin);
+  font-size: calc(12px + 1vmin);
   color: white;
 }
-
 
 .App-header {
   text-align: center;
@@ -19,18 +18,16 @@
   color: white;
 }
 
-
 .App-footer {
   position: fixed;
   bottom: 0.5%;
   right: 99.5%;
 }
 
-
 h1 {
-  font-size: 3.2rem;
   /*animation: pulsate 1.5s infinite alternate;*/
-  background-image: linear-gradient(to bottom right, rgba(131, 211, 243, 0.5), rgb(73, 111, 192, 0.5));  
+  font-size: 0.2%;
+  background-image: linear-gradient(to bottom right, rgba(75, 107, 119, 0.5), rgba(44, 71, 128, 0.5));  
   border: 0.2rem solid #fff;
   border-radius: 2rem;
   padding: 0.4em;
@@ -40,6 +37,15 @@ h1 {
             0 0 0.8rem #b2b1b3,
             0 0 2.8rem #8e8d8f,
             inset 0 0 1.3rem #818181; 
+}
+
+
+h5 {
+  background-color: black;
+  padding: 1rem;
+  display: flex;
+  text-align: center;
+  align-items: center;
 }
 
 
@@ -97,7 +103,7 @@ a{
   color: white;
  }
 
-.cancel-button{
+.cancel-button, .cancel-button:hover{
   position: relative;
   color: white;
   background-color: black;
@@ -106,13 +112,8 @@ a{
 }
 
 .cancel-button:hover{
-  position: relative;
   color: silver;
-  background-color: black;
-  right: 0%;;
-  bottom: 5%;
 }
-
 
 .info-button{
   color: white;

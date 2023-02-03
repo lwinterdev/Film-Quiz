@@ -12,13 +12,12 @@ import { TbGrain } from "react-icons/tb";
 import { FiInfo } from "react-icons/fi";
 import { ImCancelCircle } from "react-icons/im";
 import { VscGithub } from "react-icons/vsc";
-import { MdOutlineAccessAlarm} from "react-icons/md";
+import { MdOutlineAccessAlarm } from "react-icons/md";
 import DifficultyButton from "./components/DifficultyButton";
 import QuestionAmountButton from "./components/QuestionAmountButton";
 import ToggleButton from "./components/ToggleButton";
 import ModalPopupButton from "./components/ModalPopupButton";
 import InfoPopup from "./components/InfoPopup";
-import ProgressBar from "./components/ProgressBar";
 
 //styles
 import "./styles/answer.css";
@@ -31,7 +30,7 @@ import "./styles/restartButton.css";
 import "./styles/smallButton.css";
 import "./styles/quizFinished.css";
 import "./styles/toggleButton.css";
-import "./styles/progress.css"
+import "./styles/progress.css";
 
 //hooks
 import { useState, useEffect, useRef } from "react";
@@ -57,24 +56,20 @@ function App() {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [infoPopupToggle, setInfoPopupToggle] = useState(false);
-  
-  const [grainToggle, setGrainToggle] = useLocalStorage('grainToggle',true); //get the value from local storage
+
+  const [grainToggle, setGrainToggle] = useLocalStorage("grainToggle", true); //get the value from local storage
 
   const [timerToggle, setTimerToggle] = useState(false);
-  const [questionTime, setQuestionTime] = useState(0);
-  let questionTimer:any;
-  
   const handleTimerToggle = () => {
     //function to toggle the timer for quiz
     setTimerToggle(!timerToggle);
-  }
+  };
 
   const chooseDifficulty = (difficulty: string) => {
     //function to select the difficulty
     setQuestionDifficulty(difficulty);
     setDifficultySelected(true);
     startTrivia(difficulty);
-
   };
 
   const handleQuestionAmountChange = (amount: number) => {
@@ -94,7 +89,7 @@ function App() {
     setScore(0);
     setGameOver(false);
     setLoading(false);
-    //if (timerToggle) {questionTimer =(setInterval(() => setQuestionTime((prev) => prev +1 ), 10))};
+
   };
 
   const resetGame = () => {
@@ -110,7 +105,6 @@ function App() {
 
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
     //function to check the answer the user has given
-    clearInterval(questionTimer);
     const answer = e.currentTarget.value;
     //check if correct
     const correct = questions[number].correct_answer === answer;
@@ -127,17 +121,11 @@ function App() {
     setUserAnswers((prev) => [...prev, answerObject]);
   };
 
-  useEffect(()=>{
-    if (questionTime === 100 ){
-      clearInterval(questionTimer);
-    }
-  },[questionTime])
 
   const nextQuestion = () => {
     //function to jump to next question
     const nextQuestion = number + 1;
     setNumber(nextQuestion);
-    clearInterval(questionTimer);
   };
 
   const showEndResult = () => {
@@ -154,7 +142,6 @@ function App() {
     //function to toggle the website info
     setInfoPopupToggle(!infoPopupToggle);
   };
-
 
   const refOne = useRef(null);
 
@@ -177,7 +164,6 @@ function App() {
 
   return (
     <div
-    
       className={grainToggle ? "grain-active" : ""}
       style={{
         backgroundImage: `url(${BackgroundImage})`,
@@ -196,16 +182,15 @@ function App() {
           />
         </div>
 
-        <span className="App-header">
+        {<span className="App">
           <h1 className="p-3">
             FILM QUIZ <VscDeviceCameraVideo style={{ marginBottom: "5px" }} />
           </h1>
-        </span>
+        </span>}
       </span>
 
       <div className="App-header">
         <div className="App">
-
           {loading && ( //show spinner if the questions are loading
             <div>
               Loading Questions...
@@ -216,27 +201,18 @@ function App() {
           )}
         </div>
       </div>
-      
+
       <div className="App">
         {!difficultySelected && ( //show number and timer selection only if difficulty not chosen yet
           <div>
             <p className="p-2">Number of Questions</p>
 
-            <QuestionAmountButton 
+            <QuestionAmountButton
               questionAmount={questionAmount}
               callbackIncrement={() => handleQuestionAmountChange(10)}
               callbackDecrement={() => handleQuestionAmountChange(-10)}
             />
-            <span>
-              <p className="p-2">Timer</p>
-              
-              <ToggleButton
-                label={<MdOutlineAccessAlarm size={50}/>}
-                toggled={timerToggle}
-                onClick={handleTimerToggle}
-              />
-
-            </span>
+            
           </div>
         )}
 
@@ -279,11 +255,9 @@ function App() {
                 userAnswer={userAnswers && userAnswers[number]}
                 correctAnswer={questions[number].correct_answer}
                 callback={checkAnswer}
-                questionTime={10}
                 score={score}
                 difficulty={questionDifficulty}
               />
-              <ProgressBar value={questionTime}/>
             </div>
           )}
 
@@ -295,7 +269,8 @@ function App() {
               <button
                 className="m-1 next-button"
                 onClick={nextQuestion}
-                disabled={ //make button invisible when user has not answered + to keep the background image from changing size all the time
+                disabled={
+                  //make button invisible when user has not answered + to keep the background image from changing size all the time
                   !gameOver &&
                   !loading &&
                   userAnswers.length === number + 1 &&
@@ -332,7 +307,6 @@ function App() {
               </div>
             </div>
           )}
-
       </div>
 
       <div className="App-footer">
@@ -342,19 +316,17 @@ function App() {
           onClick={handleInfoPopupToggle}
         />
       </div>
-      
+
       {infoPopupToggle && ( //show the info popup only when toggled
         <span className="popup m-1" ref={refOne}>
           <InfoPopup
             callback={() => setInfoPopupToggle(false)}
             closeIcon={<ImCancelCircle />}
-            codeIcon={<VscGithub/>}
+            codeIcon={<VscGithub />}
           />
         </span>
       )}
-      
     </div>
-    
   );
 }
 
