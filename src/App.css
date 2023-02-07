@@ -39,6 +39,12 @@ h1 {
             inset 0 0 1.3rem #818181; 
 }
 
+@media (max-height:1024px){
+  h1 {
+    display: none;
+  }
+}
+
 
 h5 {
   background-color: black;
@@ -47,6 +53,7 @@ h5 {
   text-align: center;
   align-items: center;
 }
+
 
 
 a{
