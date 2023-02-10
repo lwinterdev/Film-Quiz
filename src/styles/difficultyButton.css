@@ -1,7 +1,7 @@
 .difficulty-button, .difficulty-button:active, .difficulty-button:focus{
   color: white;
   border-radius: 20px;
-  width: 40vw;
+  min-width: 50vw;
   background-image: linear-gradient(to bottom right, rgb(25, 118, 155), rgb(18, 59, 92));
 }
   

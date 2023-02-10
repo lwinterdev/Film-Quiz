@@ -15,7 +15,7 @@ const Toggle: React.FC<Props> = ({ label, toggled, onClick }) => {
   };
 
   return (
-    <label className="m-2">
+    <label className="m-2 sticky-top">
       <input type="checkbox" defaultChecked={isToggled} onClick={callback} />
       <span className="toggle-span" />
       <strong>{label}</strong>

@@ -45,7 +45,6 @@ h1 {
   }
 }
 
-
 h5 {
   background-color: black;
   padding: 1rem;
@@ -54,8 +53,6 @@ h5 {
   align-items: center;
 }
 
-
-
 a{
   border-radius: 20px;
   min-width: auto;
@@ -63,7 +60,6 @@ a{
   background-color: black;
   color : red;
 }
-
 
 .grain-active:before {
   animation: grain 5s steps(10) infinite;

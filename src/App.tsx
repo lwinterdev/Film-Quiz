@@ -12,7 +12,6 @@ import { TbGrain } from "react-icons/tb";
 import { FiInfo } from "react-icons/fi";
 import { ImCancelCircle } from "react-icons/im";
 import { VscGithub } from "react-icons/vsc";
-import { MdOutlineAccessAlarm } from "react-icons/md";
 import DifficultyButton from "./components/DifficultyButton";
 import QuestionAmountButton from "./components/QuestionAmountButton";
 import ToggleButton from "./components/ToggleButton";
@@ -58,12 +57,6 @@ function App() {
   const [infoPopupToggle, setInfoPopupToggle] = useState(false);
 
   const [grainToggle, setGrainToggle] = useLocalStorage("grainToggle", true); //get the value from local storage
-
-  const [timerToggle, setTimerToggle] = useState(false);
-  const handleTimerToggle = () => {
-    //function to toggle the timer for quiz
-    setTimerToggle(!timerToggle);
-  };
 
   const chooseDifficulty = (difficulty: string) => {
     //function to select the difficulty
@@ -173,14 +166,14 @@ function App() {
         minHeight: "100vh",
       }}
     >
-      <span className="">
-        <div className="grain-toggle">
+      <span>
+        <span className="grain-toggle">
           <ToggleButton
             label={<TbGrain size={20} />}
             toggled={grainToggle}
             onClick={handleGrainToggle}
           />
-        </div>
+        </span>
 
         {<span className="App">
           <h1 className="p-3">
