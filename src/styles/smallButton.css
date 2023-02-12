@@ -4,7 +4,7 @@
   min-width: auto;
   color: white;
   margin: 4px;
-  min-width: 10vw;
+  width: min(50px,20vw);
 }
 
 .small-button:active {

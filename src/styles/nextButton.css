@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  min-width: 20vw;
+  min-width: min(300px,50vw);
   background-image: linear-gradient(to bottom right, rgb(41, 131, 161), rgb(4, 74, 77));
   color: white;
 }
